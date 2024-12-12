@@ -44,7 +44,7 @@ defaults:
     values:
       layout: "post"
       author: "星影" # 你的名字
-      header-img: "img/green.jpg" # We don't want posts without a header image, that whould mean white on white
+      header-img: "img/117870784_p0_master1200.jpg" # We don't want posts without a header image, that whould mean white on white
 
 # Comments 
 comments :
