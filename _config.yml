@@ -1,10 +1,10 @@
 # Site settings
 title: 星影の博客 # 你的博客名字，可以定义修订
-header-img: "img/green.jpg"
+header-img: "img/117870784_p1_master1200.jpg"
 tagline: "cn"  
-description: "这是我的博客"  # 一句话描述你的博客
+description: "诶?描述嘛...懒得写啦。"  # 一句话描述你的博客
 baseurl: ""
-url: "http://cnfeat"  # 此处填写你的博客地址 
+url: "https://schale.us.kg"  # 此处填写你的博客地址 
 
 # About/contact
 owner: 
@@ -13,8 +13,8 @@ owner:
   bio: "诶?不知道怎么填博客描述啊qwq" # 填写作者信息：博客描述
 
 # Data
-gavatar: img/favicon.png # 浏览器地址栏小图标，可自定义更改
-favicon: img/favicon.png # 浏览器地址栏小图标，可自定义更改
+gavatar: img/117870784_p0_master1200.jpg # 浏览器地址栏小图标，可自定义更改
+favicon: img/117870784_p0_master1200.jpg # 浏览器地址栏小图标，可自定义更改
 
 douban_username:  # 你的豆瓣id
 twitter_username: 
