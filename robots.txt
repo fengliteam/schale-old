@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: 
+Sitemap: https://schale.us.kg/sitemap.xml
+Disallow: /img/
+Disallow: 
+Disallow: /includes/
+Disallow: /less/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /layouts/
