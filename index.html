@@ -3,48 +3,70 @@ layout: page
 description: "博客页面"
 ---
 
- 
+  
+<!-- 在<body>标签内添加以下代码 -->
+
 <!-- 加载动画的HTML结构 -->
-<div id="loading" style="display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); justify-content: center; align-items: center; transition: opacity 0.8s ease-out;">
-    <div class="loader" style="text-align: center;">
-        <div class="dot dot-1" style="width: 15px; height: 15px; background-color: #007bff; border-radius: 50%; display: inline-block; animation: bounce 1.5s infinite cubic-bezier(0.215, 0.610, 0.355, 1);"></div>
-        <div class="dot dot-2" style="width: 15px; height: 15px; background-color: #28a745; border-radius: 50%; display: inline-block; animation: bounce 1.5s infinite cubic-bezier(0.215, 0.610, 0.355, 1); animation-delay: 0.4s;"></div>
-        <div class="dot dot-3" style="width: 15px; height: 15px; background-color: #fd7e14; border-radius: 50%; display: inline-block; animation: bounce 1.5s infinite cubic-bezier(0.215, 0.610, 0.355, 1); animation-delay: 0.8s;"></div>
-        <p style="margin-top: 20px; color: #333;">正在加载...</p>
-    </div>
+<div id="loading" style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.8); z-index: 1000;">
+  <div class="loader">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <p>正在加载...</p>
+  </div>
 </div>
 
 <style>
-    @keyframes bounce {
-        0%, 20%, 53%, 80%, 100% {
-            transform: translate3d(0, 0, 0);
-        }
-        40%, 43% {
-            transform: translate3d(0, -20px, 0);
-        }
-        70% {
-            transform: translate3d(0, -15px, 0);
-        }
-        90% {
-            transform: translate3d(0, -4px, 0);
-        }
-    }
+/* 在<head>标签内或页面底部添加以下CSS样式 */
+#loading .loader {
+  text-align: center;
+}
+
+#loading .dot {
+  height: 20px;
+  width: 20px;
+  background-color: #333;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+#loading .dot:nth-child(1) {
+  animation-delay: -0.5s;
+}
+
+#loading .dot:nth-child(2) {
+  animation-delay: -0.25s;
+}
+
+#loading .dot:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var loading = document.getElementById('loading');
-        loading.style.display = 'flex'; // 当DOM加载完毕后显示加载动画
-    });
-
-    window.addEventListener('load', function() {
-        var loading = document.getElementById('loading');
-        loading.style.opacity = '0'; // 当页面完全加载后开始淡出动画
-        loading.addEventListener('transitionend', function() {
-            loading.style.display = 'none'; // 动画结束后隐藏加载动画
-        });
-    });
+// 在</body>标签之前添加以下JavaScript代码
+document.addEventListener('DOMContentLoaded', function() {
+  var loading = document.getElementById('loading');
+  window.addEventListener('load', function() {
+    loading.style.opacity = '0';
+    setTimeout(function() {
+      loading.style.display = 'none';
+    }, 500); // 延迟500毫秒后隐藏加载动画，以完成淡出效果
+  });
+});
 </script>
+ 
  
 
 {% for post in paginator.posts %}
