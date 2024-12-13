@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "About"
-description: "关于" 
+title: "致谢"
+description: "致谢" 
 header-img: "img/bg_cs_pv3_77.jpg"
 ---
 
