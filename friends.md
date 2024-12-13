@@ -4,8 +4,8 @@ title: "友情链接"
 description: "这是关于我的好友的友情链接哦⊙∀⊙！"  
 header-img:"img/117870784_p0_master1200.jpg"
 ---
-
 ###友情链接 
+---
 ##什亭之人<img src="https://i0.hdslb.com/bfs/face/d859415d434dc7634d95c03b3c71809fc4df2235.jpg@240w_240h_1c_1s_!web-avatar-space-header.avif" width="16" height="16" style="vertical-align: middle;">
 
 [B站账号链接](https://space.bilibili.com/1992332214):
