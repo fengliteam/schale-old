@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Archive"
+title: "资料库(文章库)"
 description: "文章归档"
 header-img: "img/Image_104377447271950"
 ---
