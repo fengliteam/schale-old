@@ -1,0 +1,28 @@
+ 
+<!-- _includes/time-date-widget.html -->
+<div id="time-date-widget" class="time-date-widget">
+  <div class="time"></div>
+  <div class="date"></div>
+</div>
+
+<script>
+  function updateTimeDate() {
+    var now = new Date();
+    var hours = now.getHours().toString().padStart(2, '0');
+    var minutes = now.getMinutes().toString().padStart(2, '0');
+    var seconds = now.getSeconds().toString().padStart(2, '0');
+    var timeString = hours + ":" + minutes + ":" + seconds;
+    
+    var weekDays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    var dayOfWeek = weekDays[now.getDay()];
+    var dateString = now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日 " + dayOfWeek;
+    
+    document.querySelector('.time-date-widget .time').textContent = timeString;
+    document.querySelector('.time-date-widget .date').textContent = dateString;
+  }
+  
+  // 更新时间日期
+  updateTimeDate();
+  // 每秒更新时间日期
+  setInterval(updateTimeDate, 1000);
+</script>
