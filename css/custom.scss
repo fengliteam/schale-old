@@ -1,0 +1,39 @@
+ 
+// css/styles.scss
+@import url('https://fonts.googleapis.com/css2?family=Digital-7&display=swap');
+
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#time-widget {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-family: 'Digital-7', sans-serif;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  z-index: 1001;
+
+  @media (max-width: 600px) {
+    right: auto;
+    left: 20px;
+    bottom: 20px;
+  }
+}
+ 
