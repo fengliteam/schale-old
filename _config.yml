@@ -13,8 +13,8 @@ owner:
   bio: "沙勒/夏莱，这里是一位在沙勒和夏莱来回工作的sensei(老师)" # 填写作者信息：博客描述
 
 # Data
-gavatar:img/117870784_p0_master1200.jpg # 浏览器地址栏小图标，可自定义更改
-favicon://static.wikia.nocookie.net/blue-archive/images/6/6d/Schale_Building.png/revision/latest/scale-to-width-down/250?cb=20230420092733 # 浏览器地址栏小图标，可自定义更改
+gavatar: img/117870784_p0_master1200.jpg # 浏览器地址栏小图标，可自定义更改
+favicon: //static.wikia.nocookie.net/blue-archive/images/6/6d/Schale_Building.png/revision/latest/scale-to-width-down/250?cb=20230420092733 # 浏览器地址栏小图标，可自定义更改
 
 douban_username:  # 你的豆瓣id
 twitter_username: 
