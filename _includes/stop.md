@@ -1,13 +1,6 @@
----
-layout: default
-header-img: "/img/Image119377759891802.jpg"
----
-
-<div align="center">
-![123](/img/Image119377759891802.jpg)
-</div>
-
 # 公告标题
+
+![公告图片](/img/announcement-image.jpg)
 
 尊敬的用户：
 
