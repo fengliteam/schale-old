@@ -4,7 +4,7 @@ header-img: "/img/Image119377759891802.jpg"
 ---
 
 <div align="center">
-(/img/Image119377759891802.jpg)
+![123](/img/Image119377759891802.jpg)
 </div>
 
 # 公告标题
