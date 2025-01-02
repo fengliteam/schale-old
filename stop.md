@@ -3,6 +3,7 @@ layout: default
 header-img: "/img/Image119377759891802.jpg"
 ---
 
+![公告图片](/img/announcement-image.jpg)
 # 系统维护通知
 
 尊敬的用户：
