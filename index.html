@@ -1,41 +1,47 @@
+ 
 ---
-layout: page
-description: "博客页面"
+layout: default
+title: "平台更新通知及补偿措施"
 ---
 
-{% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">            
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {{ post.content | strip_html | truncate:150 }}
-        </div>
-    </a>
-    <p class="post-meta">Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>
-</div>
+## 平台更新通知
 
-<hr>
-{% endfor %}
+尊敬的用户：
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+感谢您一直以来对我们平台的信任与支持。为了提供更优质的服务，我们计划对平台进行系统升级。以下是更新详情：
+
+### 更新时间
+
+更新将从北京时间2025年1月2日23点开始，预计持续到1月7日早上6点。请注意，具体结束时间可能会根据实际情况有所调整，请密切关注我们的官方通知。
+
+### 更新内容
+
+- 全新界面设计，带来更佳的用户体验。
+- 增强功能体验，推出多项新功能。
+- 提升性能效率，优化系统响应速度。
+
+### 更新期间的温馨提示
+
+- 请在更新前备份您的个人信息和数据。
+- 更新期间可能会出现短暂的服务中断，敬请谅解。
+
+### 补偿措施
+
+为了补偿更新期间可能给您带来的不便，我们将向每位受影响的用户提供以下补偿：
+
+- **690青辉石**：请您在更新完成后，于14天内登录平台领取。
+
+### 特别提醒
+
+- 请留意平台公告，以获取最新的更新进度和补偿领取详情。
+- 如有疑问，请联系我们的客服团队。
+
+### 结束语
+
+我们感谢您的理解与支持，并承诺将持续努力，为您提供更优质的服务。期待您的持续关注与宝贵意见。
+
+此致
+敬礼！
+
+[您的平台名称]团队
+ 
