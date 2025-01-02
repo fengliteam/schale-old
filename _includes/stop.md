@@ -1,6 +1,6 @@
 # 公告标题
 
-![公告图片](/img/announcement-image.jpg)
+![公告图片](/img/Image_119377759891802.gif)
 
 尊敬的用户：
 
