@@ -5,15 +5,16 @@
   },
   "update": {
     "required": false,
-    "version": "1.0.0",
-    "url": "null",
+    "version": "1.1.1",
+    "url": "https://update.example.com/v1.1.1.zip",
     "fileHash": "A1B2C3D4E5F6..."
   },
   "security": {
-    "sslVerificationEnabled": false,
-    "hashCheckEnabled": false
+    "sslVerificationEnabled": true,
+    "hashCheckEnabled": true
   },
   "servers": [
+    "https://cdn1.example.com/file.zip",
     "https://www.zhanid.com/api/lanzoujx.php?url=https%3A%2F%2Fwwg.lanzouo.com%2FibnQJ2m6nvgb&type=down"
   ],
   "timeRestrictions": {
