@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ page.title | default: site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description | strip_html | truncate: 155 }}">
 
 <!-- 预加载关键资源 -->
 <link rel="preload" href="/assets/css/main.css" as="style">
@@ -12,6 +13,15 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "{{ site.title }}",
-  "url": "{{ site.url }}"
+  "url": "{{ site.url }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ site.url }}/search?q={search_term}",
+    "query-input": "required name=search_term"
+  }
 }
 </script>
+
+<!-- 站长验证 -->
+<meta name="google-site-verification" content="{{ site.google_verify }}">
+<meta name="msvalidate.01" content="{{ site.bing_verify }}">
