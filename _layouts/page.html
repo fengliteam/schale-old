@@ -80,6 +80,36 @@ layout: default
 }
 
 /* ================== 智能返回顶部 ================== */
+#back-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#back-top a {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(42,92,170,0.3);
+}
+
+#back-top a::after {
+    content: "↑";
+    color: white;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .site-heading h1 { font-size: 2rem; }
+    #back-top { bottom: 1rem; right: 1rem; }
+}
+</style>
 
 <!-- ================== 页面结构 ================== -->
 <header class="intro-header" style="background-image: none">
