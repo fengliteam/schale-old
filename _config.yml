@@ -1,32 +1,63 @@
-# ========== 核心配置 ==========
+# ================== 核心配置 ==================
 title: "沙勒避难所-S.C.H.A.L.E."
+tagline: "蔚蓝档案资源中心"
+description: "我只是一个兴趣爱好者而已"
 url: "https://schale.us.kg"
+baseurl: ""  # 如果部署在子目录需填写 (如 '/blog')
+
+# ================== 安全与SEO ==================
 timezone: Asia/Shanghai
-permalink: /:title/           # 短链接优化
+future: false # 禁止构建未来日期的文章
+encoding: "utf-8"
+permalink: /:year/:month/:title/
+paginate: 12 # 更符合SEO的分页数量
 
-# ========== 安全配置 ==========
-safe: true
-exclude:
-  - node_modules
-  - Gemfile.lock
-  - README.md
+# ================== 站长验证 ==================
+google_verify: "替换为Google Search Console验证码"
+bing_verify: "替换为Bing站长工具验证码"
 
-# ========== 评论系统 ==========
-cusdis:
-  app_id: "替换你的Cusdis应用ID"
+# ================== 媒体优化 ==================
+# 内联Base64图标 (尺寸建议 48x48)
+favicon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAVFBMVEX///8AAAD39/fy8vL5+fn8/Pz09PTw8PD7+/v4+Pj////6+vr///3+/v79/f3///j///v///b///n///z///7///+m1xZJAAAAAXRSTlMAQObYZgAAAZVJREFUSMftlNkSgjAQRQMkhC0QdlA2FVCW93/DQYqZqhn5qPJS91fdnO7T6Y9i/CfG8QO8h+8b/6wB8B6+b/yzBsB7+L7xzxr4kfHr9Xq73R6Px/P5fL1e7/f7/X4/zzPGeJ7n7Xa73W7HcRzHcRzHcRzHcRzHcRzHcRzH8X8x/mX8OI7jOI7jOI7jOI7jOI7jOI7jOP4T4z81/geUyWwUJ0fZ1QAAAABJRU5ErkJggg=="
 
-# ========== 视觉配置 ==========
-design:
-  primary_color: "#2A5CAA"
-  accent_color: "#5BC0EB"
-  font_stack: "system-ui, -apple-system, Segoe UI, Roboto, Noto Sans SC, sans-serif"
-
-# ========== 站长验证 ==========
-google_verify: "替换Google验证码"
-bing_verify: "替换Bing验证码"
-
-# ========== 社交链接 ==========
+# ================== 社交资料 ==================
 social:
   github: xingyings
-  zhihu: 替换知乎用户名
-  bilibili: 替换B站UID
+  zhihu:  # 填写知乎用户名
+  bilibili:  # 填写B站UID
+
+# ================== 作者信息 ==================
+author:
+  name: "星影"
+  bio: "穿梭于沙勒与夏莱的Sensei"
+  email: "admin@xingying.us.kg"
+  avatar: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%232A5CAA'/%3E%3Cpath d='M30,70 L50,30 L70,70' stroke='%23FFF' stroke-width='8' fill='none'/%3E%3C/svg%3E"
+
+# ================== 内容策略 ==================
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "星影"
+      header_img: "https://www.bilibili.com/favicon.ico" # WebP格式默认头图
+      seo_title: ""
+
+# ================== 构建优化 ==================
+markdown: kramdown
+highlighter: rouge
+incremental: true
+keep_files: ["assets"]
+exclude: 
+  - "node_modules"
+  - "Gemfile.lock"
+  - "README.md"
+  - "package.json"
+  - "yarn.lock"
+
+# ================== 安全策略 ==================
+sass:
+  style: compressed # CSS压缩
+security:
+  csp: "default-src 'self' https: 'unsafe-inline'"
