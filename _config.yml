@@ -62,10 +62,4 @@ sass:
 security:
   csp: "default-src 'self' https: 'unsafe-inline'"
 
-plugins:
-- jekyll-seo-tag
 
-# SEO参数优化
-title: 沙勒避难所
-description:沙勒人开的博客网站，时不时搞一些游戏或者是科技相关的
-url: "https://schale.us.kg"
