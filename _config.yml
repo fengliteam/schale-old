@@ -2,7 +2,7 @@
 title: "沙勒避难所-S.C.H.A.L.E."
 url: "https://schale.us.kg"
 timezone: Asia/Shanghai
-permalink: /:title/
+permalink: /:title/           # 短链接优化
 
 # ========== 安全配置 ==========
 safe: true
@@ -20,3 +20,13 @@ design:
   primary_color: "#2A5CAA"
   accent_color: "#5BC0EB"
   font_stack: "system-ui, -apple-system, Segoe UI, Roboto, Noto Sans SC, sans-serif"
+
+# ========== 站长验证 ==========
+google_verify: "替换Google验证码"
+bing_verify: "替换Bing验证码"
+
+# ========== 社交链接 ==========
+social:
+  github: xingyings
+  zhihu: 替换知乎用户名
+  bilibili: 替换B站UID
