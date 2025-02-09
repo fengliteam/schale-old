@@ -1,81 +1,39 @@
-<section class="comment-system">
-  <h2 class="comment-title">💬 读者讨论区</h2>
+<div class="comment-section">
+  <h3>💬 读者讨论区</h3>
   
-  <!-- 评论容器 -->
   <div id="cusdis_thread"
     data-host="https://cusdis.com"
     data-app-id="{{ site.cusdis.app_id }}"
     data-page-id="{{ page.url | url_encode }}"
     data-page-url="{{ page.url | absolute_url }}"
     data-page-title="{{ page.title }}"
-    data-theme="light"
   ></div>
+</div>
 
-  <!-- 加载状态管理 -->
-  <div class="comment-status">
-    <div class="loading">⏳ 正在加载评论系统...</div>
-    <div class="error">⚠️ 加载失败，请检查网络后刷新</div>
-  </div>
+<script>
+// 智能加载评论
+window.addEventListener('DOMContentLoaded', function() {
+  if (document.querySelector('#cusdis_thread')) {
+    const script = document.createElement('script');
+    script.src = 'https://cusdis.com/js/cusdis.es.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }
+});
+</script>
 
-  <!-- 异步加载脚本 -->
-  <script>
-  (function() {
-    const loadComment = () => {
-      const script = document.createElement('script');
-      script.src = 'https://cusdis.com/js/cusdis.es.js';
-      script.async = true;
-      script.defer = true;
-      
-      script.onload = () => {
-        document.querySelector('.loading').hidden = true;
-      };
-      
-      script.onerror = () => {
-        document.querySelector('.loading').hidden = true;
-        document.querySelector('.error').hidden = false;
-      };
-      
-      document.body.appendChild(script);
-    }
-    
-    // 滚动到评论区域时加载
-    const observer = new IntersectionObserver((entries) => {
-      if(entries[0].isIntersecting) {
-        loadComment();
-        observer.disconnect();
-      }
-    });
-    
-    observer.observe(document.querySelector('.comment-system'));
-  })();
-  </script>
+<style>
+.comment-section {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
 
-  <style>
-  .comment-system {
-    margin: var(--space-xl) 0;
-    padding: var(--space-md);
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  }
-  
-  .comment-title {
-    font-size: 1.25rem;
-    color: var(--primary);
-    margin-bottom: var(--space-md);
-    border-left: 4px solid var(--accent);
-    padding-left: var(--space-sm);
-  }
-  
-  .comment-status div {
-    padding: var(--space-sm);
-    text-align: center;
-    color: var(--text-light);
-  }
-  
-  .comment-status .error {
-    display: none;
-    color: #dc3545;
-  }
-  </style>
-</section>
+.comment-section h3 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+}
+</style>
