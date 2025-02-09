@@ -2,19 +2,216 @@
 layout: default
 ---
 
-<article class="post">
-  <header class="post-header">
-    <h1>{{ page.title }}</h1>
-    <div class="post-meta">
-      <time>{{ page.date | date: "%Y年%m月%d日" }}</time>
-      <span>•</span>
-      <span>{{ site.owner.name }}</span>
+<!-- ===================== 智能SEO引擎 ===================== -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://schale.us.kg{{ page.url }}"
+    },
+    "headline": "{{ page.title }}",
+    "alternativeHeadline": "{{ page.seo_title }}",
+    "image": {
+        "@type": "ImageObject",
+        "url": "{% if page.header-img %}{{ page.header-img | absolute_url }}.webp{% else %}/og-image.webp{% endif %}",
+        "width": 1200,
+        "height": 630
+    },
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "author": {
+        "@type": "Person",
+        "name": "星影",
+        "url": "https://schale.us.kg/about"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "沙勒避难所",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMkE1Q0NBIi8+PHBhdGggZD0iTTQwIDQwbDQwIDQwLTQwIDQwIiBzdHJva2U9IiNGRkYiIHN0cm9rZS13aWR0aD0iNiIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjIwIiBmaWxsPSIjRkZGIi8+PC9zdmc+",
+            "width": 120,
+            "height": 120
+        }
+    },
+    "description": "{{ page.description | default: site.description | strip_html | truncate: 155 }}",
+    "speakable": {
+        "@type": "SpeakableSpecification",
+        "xPath": [
+            "/html/head/title",
+            "/html/body/article/div[@class='content']"
+        ]
+    }
+}
+</script>
+
+<style>
+/* ===================== 美学设计系统 ===================== */
+:root {
+    --primary: #2A5CAA;
+    --accent: #5BC0EB;
+    --text: #2C3E50;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+/* 微交互视觉系统 */
+body {
+    font-family: 'Inter', system-ui;
+    line-height: 1.8;
+    color: var(--text);
+    background: #f8f9fa;
+    scroll-behavior: smooth;
+}
+
+.hero-section {
+    background: var(--gradient);
+    padding: 6rem 1rem 4rem;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E");
+    animation: stardust 60s linear infinite;
+}
+
+@keyframes stardust {
+    from { transform: translate(0,0); }
+    to { transform: translate(-50%,-50%); }
+}
+
+.content-card {
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    max-width: 800px;
+    margin: -80px auto 3rem;
+    padding: 3rem;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+}
+
+/* 深度SEO优化样式 */
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+/* 必应速度优化 */
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+    background: linear-gradient(90deg, #f1f3f5 25%, #f8f9fa 50%, #f1f3f5 75%);
+    background-size: 400% 400%;
+    transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"] {
+    opacity: 0;
+    animation: img-fadein 0.5s ease forwards;
+}
+
+@keyframes img-fadein {
+    to { opacity: 1; background: none; }
+}
+
+@media (max-width: 768px) {
+    .content-card { padding: 2rem; margin: -60px auto 2rem; }
+    h1 { font-size: 2rem; }
+}
+</style>
+
+<!-- ===================== 视觉交互层 ===================== -->
+<section class="hero-section">
+    <div class="logo" style="
+        width: 100px; height: 100px;
+        margin: 0 auto 2rem;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMkE1Q0NBIi8+PHBhdGggZD0iTTQwIDQwbDQwIDQwLTQwIDQwIiBzdHJva2U9IiNGRkYiIHN0cm9rZS13aWR0aD0iNiIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjIwIiBmaWxsPSIjRkZGIi8+PC9zdmc+')
+        no-repeat center/contain">
     </div>
-  </header>
+    
+    <h1 itemprop="headline">{{ page.title }}</h1>
+    {% if page.seo_title %}<div class="seo-subtitle">{{ page.seo_title }}</div>{% endif %}
+</section>
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+<main class="content-card">
+    <!-- 智能资源加载 -->
+    <script>
+    (function(){
+        // 必应速度优化：首屏资源预加载
+        const criticalAssets = [
+            '{{ page.header-img | default: "/default-og.webp" }}',
+            '/assets/css/fonts.woff2'
+        ];
+        criticalAssets.forEach(url => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = url.includes('.woff2') ? 'font' : 'image';
+            link.href = url;
+            document.head.appendChild(link);
+        });
 
-  {% include comments.html %}
-</article>
+        // WebP智能转换系统
+        //document.querySelectorAll('img').forEach(img => {
+            //const src = img.getAttribute('src');
+           // if (src && !src.endsWith('.webp')) {
+             //   const webpSrc = src.replace(/\.(jpe?g|png)/i, '.webp');
+              //  img.setAttribute('src', webpSrc);
+                //img.setAttribute('srcset', `${webpSrc} 1x, ${webpSrc.replace('.webp','@2x.webp')} 2x`);
+          //  }
+         //   img.setAttribute('loading', 'lazy');
+          //  img.setAttribute('decoding', 'async');
+        });
+    })();
+    </script>
+
+    <article>
+        <div class="meta-info">
+            <time datetime="{{ page.date | date_to_xmlschema }}">📅 {{ page.date | date: "%Y/%m/%d" }}</time>
+            <span>•</span>
+            <span>✍️ 作者：星影</span>
+        </div>
+
+        {{ content }}
+
+        <!-- 增强型页脚 -->
+        <footer class="article-footer">
+            <div class="license-info">
+                <h3>📜 内容许可</h3>
+                <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0 国际许可协议</a>，转载需注明来源。</p>
+            </div>
+            <div class="contact-info">
+                <h3>📮 联系我们</h3>
+                <p>邮箱：<a href="mailto:admin@xingying.us.kg">admin@xingying.us.kg</a><br>
+                   QQ：3981279069</p>
+            </div>
+        </footer>
+    </article>
+</main>
