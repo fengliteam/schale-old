@@ -2,35 +2,170 @@
 layout: default
 ---
 
-<!-- Page Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+<!-- 智能SEO核心 -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "{{ page.title | default: site.title }}",
+    "url": "{{ site.url }}{{ page.url }}",
+    "description": "{{ page.description | default: site.description | strip_html | truncate: 155 }}",
+    "image": "{% if page.header-img %}{{ page.header-img | absolute_url }}.webp{% else %}{{ site.header-img | absolute_url }}.webp{% endif %}",
+    "author": {
+        "@type": "Person",
+        "name": "星影",
+        "email": "admin@xingying.us.kg"
+    }
+}
+</script>
+
+<style>
+/* ================== 内联视觉系统 ================== */
+:root {
+    --primary: #2A5CAA;
+    --accent: #5BC0EB;
+    --text: #2C3E50;
+}
+
+.intro-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    padding: 6rem 1rem 4rem;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    position: relative;
+    color: white;
+}
+
+.intro-header::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 60%);
+    animation: pulse 8s linear infinite;
+}
+
+@keyframes pulse {
+    0% { transform: translate(0,0) rotate(0); }
+    100% { transform: translate(-50%,-50%) rotate(360deg); }
+}
+
+.site-heading h1 {
+    font-size: 2.8rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 1.5rem;
+}
+
+.site-heading .subheading {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* ================== 现代布局系统 ================== */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.post-preview {
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.post-preview:hover {
+    transform: translateY(-5px);
+}
+
+/* ================== 智能返回顶部 ================== */
+#back-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#back-top a {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(42,92,170,0.3);
+}
+
+#back-top a::after {
+    content: "↑";
+    color: white;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .site-heading h1 { font-size: 2rem; }
+    #back-top { bottom: 1rem; right: 1rem; }
+}
+</style>
+
+<!-- ================== 页面结构 ================== -->
+<header class="intro-header" style="background-image: none">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-                    <hr class="small">
-                    <span class="subheading">{{ page.description }}</span>
+                    <h1>{{ page.title | default: site.title }}</h1>
+                    <hr class="small" style="border-color: rgba(255,255,255,0.3)">
+                    <div class="subheading">{{ page.description }}</div>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<link rel="stylesheet" href="/css/backtop.css">  <!-- Back Top -->
-<script type="text/javascript" src="/js/backtop.js"></script>  <!-- Back Top -->
+<main class="container">
+    <article class="post-preview">
+        {{ content }}
+    </article>
+</main>
+
+<!-- ================== 智能交互系统 ================== -->
+<script>
+// 返回顶部优化
+window.addEventListener('scroll', function() {
+    const backTop = document.getElementById('back-top');
+    backTop.style.opacity = window.scrollY > 200 ? '1' : '0';
+});
+
+document.querySelector('#back-top a').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// 图片优化系统
+document.addEventListener('DOMContentLoaded', function() {
+    // WebP自动转换
+    document.querySelectorAll('img').forEach(img => {
+        if (!img.src.endsWith('.webp')) {
+            img.src = img.src.replace(/\.(jpg|jpeg|png)/i, '.webp');
+        }
+        img.loading = 'lazy';
+    });
+
+    // 首屏加载优化
+    const criticalImages = document.querySelectorAll('img[loading="eager"]');
+    criticalImages.forEach(img => {
+        img.src = img.dataset.src;
+    });
+});
+</script>
 
 <div id="back-top">
-  <a href="#top" title="回到顶部"></a>
+  <a href="#top" title="返回顶部"></a>
 </div>
-
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			{{ content }}
-		</div>
-	</div>
-</div>
-
-<hr>
