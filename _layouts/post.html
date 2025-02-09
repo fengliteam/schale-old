@@ -215,3 +215,27 @@ img[loading="lazy"] {
         </footer>
     </article>
 </main>
+
+{% include header.html %}
+
+<main class="container">
+  <article class="article-content">
+    <header class="article-header">
+      <h1 class="article-title">{{ page.title }}</h1>
+      <div class="article-meta">
+        <time>{{ page.date | date: "%Y年%-m月%-d日" }}</time>
+        <span>•</span>
+        <span>{{ site.owner.name }}</span>
+      </div>
+    </header>
+
+    <div class="content">
+      {{ content }}
+    </div>
+
+    <!-- 评论系统 -->
+    {% include comments.html %}
+  </article>
+</main>
+
+{% include footer.html %}
