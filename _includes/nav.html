@@ -1,31 +1,236 @@
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+<nav class="site-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+    <div class="nav-container">
+        <!-- 移动端菜单开关 -->
+        <div class="mobile-menu">
+            <button class="hamburger" aria-label="菜单开关" aria-expanded="false">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
             </button>
-            <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
+            <a class="nav-brand" href="{{ site.baseurl }}/" itemprop="url">
+                <span itemprop="name">{{ site.title }}</span>
+            </a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="{{ site.baseurl }}/">首页</a>
+        <!-- 导航菜单 -->
+        <div class="nav-menu" id="nav-menu">
+            <ul class="nav-list" role="menubar">
+                <li role="none">
+                    <a href="{{ site.baseurl }}/" role="menuitem" itemprop="url">首页</a>
                 </li>
                 {% for page in site.pages %}{% if page.title %}
-                <li>
-                    <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                <li role="none" itemprop="name">
+                    <a href="{{ page.url | prepend: site.baseurl }}" role="menuitem" itemprop="url">{{ page.title }}</a>
                 </li>
                 {% endif %}{% endfor %}
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
 </nav>
+
+<style>
+/* ================== 内联导航样式 ================== */
+:root {
+    --nav-bg: rgba(42,92,170,0.98);
+    --nav-text: #ffffff;
+    --nav-accent: #5BC0EB;
+}
+
+.site-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background: var(--nav-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* 品牌标识 */
+.nav-brand {
+    color: var(--nav-text);
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.nav-brand:hover {
+    opacity: 0.8;
+}
+
+/* 导航菜单 */
+.nav-list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list a {
+    color: var(--nav-text);
+    text-decoration: none;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--nav-accent);
+    transition: width 0.3s ease;
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+}
+
+/* 移动端菜单 */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.hamburger-box {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    width: 100%;
+    height: 2px;
+    background: var(--nav-text);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: var(--nav-text);
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s;
+}
+
+.hamburger-inner::before {
+    top: -6px;
+}
+
+.hamburger-inner::after {
+    bottom: -6px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .mobile-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem;
+    }
+
+    .nav-list li {
+        padding: 0.5rem 0;
+    }
+
+    .nav-list a::after {
+        display: none;
+    }
+
+    /* 激活状态 */
+    .nav-menu.active {
+        max-height: 500px;
+    }
+
+    .hamburger.active .hamburger-inner {
+        transform: rotate(45deg);
+    }
+
+    .hamburger.active .hamburger-inner::before {
+        transform: translateY(6px) rotate(90deg);
+    }
+
+    .hamburger.active .hamburger-inner::after {
+        transform: translateY(-6px) rotate(90deg);
+    }
+}
+</style>
+
+<script>
+// 原生移动菜单切换
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('#nav-menu');
+
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        this.setAttribute('aria-expanded', this.classList.contains('active'));
+    });
+
+    // 点击外部区域关闭菜单
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.site-nav')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // 优化移动端滚动体验
+    let lastScroll = 0;
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.scrollY;
+        const nav = document.querySelector('.site-nav');
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            nav.style.transform = 'translateY(-100%)';
+        } else {
+            nav.style.transform = 'translateY(0)';
+        }
+        lastScroll = currentScroll;
+    });
+});
+</script>
