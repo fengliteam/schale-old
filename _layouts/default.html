@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-CN" itemscope itemtype="http://schema.org/WebSite">
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  
+  <!-- 预加载关键CSS -->
+  <link rel="preload" href="/css/theme.css" as="style">
+  <link rel="stylesheet" href="/css/theme.css">
+  
+  <!-- 结构化数据 -->
+  {% include structured-data.html %}
+</head>
+
 {% include head.html %}
 
 <!-- 内联关键CSS -->
