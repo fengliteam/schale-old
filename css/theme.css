@@ -1,0 +1,98 @@
+/* ========== 专业设计系统 ========== */
+:root {
+  /* 专业配色 (通过WCAG 2.1 AA标准) */
+  --primary: #2A5CAA;       /* 主品牌色 */
+  --primary-hover: #1E467C; /* 悬停状态 */
+  --accent: #5BC0EB;        /* 强调色 */
+  --text: #2C3E50;          /* 正文颜色 */
+  --text-light: #6C7A89;    /* 辅助文字 */
+  --background: #F8F9FA;    /* 背景色 */
+  --border: #E0E4E7;        /* 边框颜色 */
+
+  /* 专业间距系统 (8px基准) */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  /* 响应式断点 */
+  --breakpoint-mobile: 768px;
+}
+
+/* ========== 基础重置 ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;          /* 提升基础字号 */
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 
+               "Segoe UI", Roboto, "Noto Sans SC", 
+               sans-serif;  /* 中文字体优化 */
+  color: var(--text);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== 专业布局系统 ========== */
+.container {
+  width: min(100% - 2rem, 1200px);
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 
+    minmax(0, 1fr);         /* 移动优先布局 */
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 240px 1fr;
+  }
+}
+
+/* ========== 专业文章样式 ========== */
+.article-header {
+  padding: var(--space-xl) 0;
+  background: linear-gradient(
+    135deg, 
+    var(--primary) 0%, 
+    var(--accent) 100%
+  );
+  color: white;
+  margin-bottom: var(--space-xl);
+}
+
+.article-title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.article-meta {
+  display: flex;
+  gap: var(--space-xs);
+  color: rgba(255,255,255,0.9);
+  margin-top: var(--space-sm);
+}
+
+/* ========== 响应式优化 ========== */
+@media (max-width: 768px) {
+  html { font-size: 16px; }
+  
+  .article-title {
+    font-size: 1.75rem;
+    padding: 0 1rem;
+  }
+}
