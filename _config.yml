@@ -1,63 +1,63 @@
-# Site settings
-title: 沙勒避难所-S.C.H.A.L.E. # 你的博客名字，可以定义修订
-header-img: "img/117870784_p1_master1200.jpg"
-tagline: "cn"  
-description: "一个ba国服玩家创建的博客"  # 一句话描述你的博客
-baseurl: ""
-url: "https://schale.us.kg"  # 此处填写你的博客地址 
+# ================== 核心配置 ==================
+title: "沙勒避难所-S.C.H.A.L.E."
+tagline: "蔚蓝档案资源中心"
+description: "提供最新AzureArchive二创资源、立绘同步方案与技术支援，专注提升sensei的创作效率"
+url: "https://schale.us.kg"
+baseurl: ""  # 如果部署在子目录需填写 (如 '/blog')
 
-# About/contact
-owner: 
-  name: "星影" # 填写作者信息：名字
-  email: admin@xingying.us.kg # 填写作者信息：邮箱
-  bio: "沙勒/夏莱，这里是一位在沙勒和夏莱来回工作的sensei(老师)" # 填写作者信息：博客描述
-
-# Data
-gavatar: //static.wikia.nocookie.net/blue-archive/images/0/0a/Schale_Icon_2.png # 浏览器地址栏小图标，可自定义更改
-favicon: //static.wikia.nocookie.net/blue-archive/images/6/6d/Schale_Building.png # 浏览器地址栏小图标，可自定义更改
-
-douban_username:  # 你的豆瓣id
-twitter_username: 
-github_username: xingyings
-facebook_username: 
-weibo_username: 
-zhihu_username: 
-
-# Build settings  
-# use Github Flavored Markdown !important  
-# document: http://jekyllrb.com/docs/configuration/#kramdown  
-markdown: kramdown
-highlighter: rouge
-permalink: pretty
-paginate: 8
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
-
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+# ================== 安全与SEO ==================
 timezone: Asia/Shanghai
+future: false # 禁止构建未来日期的文章
+encoding: "utf-8"
+permalink: /:year/:month/:title/
+paginate: 12 # 更符合SEO的分页数量
 
-# Defaults for posts
+# ================== 站长验证 ==================
+google_verify: "替换为Google Search Console验证码"
+bing_verify: "替换为Bing站长工具验证码"
+
+# ================== 媒体优化 ==================
+# 内联Base64图标 (尺寸建议 48x48)
+favicon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAVFBMVEX///8AAAD39/fy8vL5+fn8/Pz09PTw8PD7+/v4+Pj////6+vr///3+/v79/f3///j///v///b///n///z///7///+m1xZJAAAAAXRSTlMAQObYZgAAAZVJREFUSMftlNkSgjAQRQMkhC0QdlA2FVCW93/DQYqZqhn5qPJS91fdnO7T6Y9i/CfG8QO8h+8b/6wB8B6+b/yzBsB7+L7xzxr4kfHr9Xq73R6Px/P5fL1e7/f7/X4/zzPGeJ7n7Xa73W7HcRzHcRzHcRzHcRzHcRzHcRzH8X8x/mX8OI7jOI7jOI7jOI7jOI7jOI7jOP4T4z81/geUyWwUJ0fZ1QAAAABJRU5ErkJggg=="
+
+# ================== 社交资料 ==================
+social:
+  github: xingyings
+  zhihu:  # 填写知乎用户名
+  bilibili: 1090378791
+
+# ================== 作者信息 ==================
+author:
+  name: "星影"
+  bio: "穿梭于沙勒与夏莱的Sensei"
+  email: "admin@xingying.us.kg"
+  avatar: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%232A5CAA'/%3E%3Cpath d='M30,70 L50,30 L70,70' stroke='%23FFF' stroke-width='8' fill='none'/%3E%3C/svg%3E"
+
+# ================== 内容策略 ==================
 defaults:
-  -
-    scope: 
+  - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
-      author: "星影" # 你的名字
-      header-img: "img/117870784_p0_master1200.jpg" # We don't want posts without a header image, that whould mean white on white
+      author: "星影"
+      header_img: "/assets/headers/default.webp" # WebP格式默认头图
+      seo_title: ""
 
-# Comments 
-comments :
-  provider : disqus # 使用 disqus 评论模块，读者翻墙才能看见
-  duoshuo :
-    short_name :  # 填写你的 disqus id
-  disqus :
-      short_name :  # 填写你的 disqus id
+# ================== 构建优化 ==================
+markdown: kramdown
+highlighter: rouge
+incremental: true
+keep_files: ["assets"]
+exclude: 
+  - "node_modules"
+  - "Gemfile.lock"
+  - "README.md"
+  - "package.json"
+  - "yarn.lock"
 
-# Analytics and webmaster tools stuff goes here
-google_analytics:  # 填写你  google_analytics id
-google_verify:
-# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:
-
-# Links to include in footer navigation
+# ================== 安全策略 ==================
+sass:
+  style: compressed # CSS压缩
+security:
+  csp: "default-src 'self' https: 'unsafe-inline'"
