@@ -61,3 +61,6 @@ sass:
   style: compressed # CSS压缩
 security:
   csp: "default-src 'self' https: 'unsafe-inline'"
+
+cusdis:
+     app_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # 替换真实ID
