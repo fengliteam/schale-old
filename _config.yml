@@ -1,7 +1,7 @@
 # ================== 核心配置 ==================
 title: "沙勒避难所-S.C.H.A.L.E."
-tagline: "蔚蓝档案资源中心"
-description: "提供最新AzureArchive二创资源、立绘同步方案与技术支援，专注提升sensei的创作效率"
+tagline: "蔚蓝档案资源，科技资讯等"
+description: "一个普通的up"
 url: "https://schale.us.kg"
 baseurl: ""  # 如果部署在子目录需填写 (如 '/blog')
 
@@ -9,7 +9,7 @@ baseurl: ""  # 如果部署在子目录需填写 (如 '/blog')
 timezone: Asia/Shanghai
 future: false # 禁止构建未来日期的文章
 encoding: "utf-8"
-permalink: /:year/:month/:title/
+permalink: /:title/
 paginate: 12 # 更符合SEO的分页数量
 
 # ================== 站长验证 ==================
