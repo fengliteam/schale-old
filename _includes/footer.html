@@ -1,43 +1,174 @@
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-content">
-      <p class="copyright">
-        © {{ "now" | date: "%Y" }} {{ site.title }} 
-        <a href="mailto:admin@xingying.us.kg">联系我们</a>
-      </p>
-      
-      <div class="badges">
-        <span class="ssl-badge">🔒 SSL安全</span>
-        <span class="ipv6-badge">🌐 IPv6就绪</span>
-      </div>
+<!-- Footer -->
+<footer itemscope itemtype="http://schema.org/WPFooter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!-- 社交链接优化 -->
+                <div class="social-links" aria-label="社交媒体链接">
+                    <ul class="icon-list">
+                        <!-- RSS -->
+                        <li>
+                            <a href="{{ "/feed.xml" | prepend: site.baseurl }}" aria-label="RSS订阅" rel="noopener">
+                                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="currentColor" d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2zm-7 0c0-3.313-2.687-6-6-6v2c2.206 0 4 1.794 4 4h2zM4 11a1 1 0 100 2 1 1 0 000-2z"/>
+                                </svg>
+                            </a>
+                        </li>
+
+                        <!-- 知乎 -->
+                        {% if site.zhihu_username %}
+                        <li>
+                            <a href="https://www.zhihu.com/people/{{ site.zhihu_username }}" target="_blank" rel="noopener" aria-label="知乎主页">
+                                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="currentColor" d="M12.344 17.963c-1.627 0-3.037-.28-4.238-.83-1.15-.53-2.15-1.3-2.92-2.26-.8-1.01-1.24-2.17-1.24-3.44 0-1.25.42-2.4 1.25-3.37.84-.98 2-1.47 3.49-1.47 1.38 0 2.48.45 3.29 1.32.82.89 1.23 2.05 1.23 3.47 0 .94-.19 1.77-.57 2.48-.38.7-.9 1.27-1.55 1.69-.65.42-1.37.63-2.15.63-.74 0-1.38-.17-1.94-.5-.56-.34-1-.8-1.32-1.4l-1.93.84c.4.91 1.05 1.63 1.94 2.15.9.53 1.95.79 3.16.79 1.57 0 2.89-.46 3.94-1.36 1.06-.91 1.59-2.13 1.59-3.65 0-1.76-.57-3.16-1.72-4.18-1.15-1.03-2.72-1.54-4.73-1.54-2.09 0-3.76.57-5.02 1.7-1.26 1.14-1.89 2.7-1.89 4.68 0 1.72.49 3.19 1.46 4.39.97 1.2 2.33 2.03 4.07 2.48 1.74.45 3.67.68 5.77.68h3.79v-2.04h-3.42c-1.79 0-3.37-.15-4.75-.45-1.38-.3-2.57-.82-3.55-1.56v-1.98c.92.72 2.03 1.27 3.33 1.64 1.3.37 2.75.56 4.34.56 1.67 0 3.11-.25 4.32-.76 1.21-.5 2.15-1.23 2.83-2.17.68-.94 1.02-2.05 1.02-3.33 0-1.45-.41-2.66-1.24-3.62-.83-.96-2.03-1.44-3.6-1.44-1.5 0-2.68.43-3.53 1.3-.85.87-1.28 2.07-1.28 3.6 0 1.06.24 1.98.73 2.75.48.77 1.16 1.34 2.03 1.72.87.38 1.85.57 2.94.57.93 0 1.76-.17 2.5-.52.73-.35 1.33-.83 1.79-1.45l1.93.84c-.6.95-1.43 1.68-2.5 2.19-1.07.51-2.31.77-3.72.77-1.91 0-3.49-.47-4.74-1.41-1.25-.94-1.87-2.25-1.87-3.93 0-1.93.62-3.43 1.85-4.5 1.23-1.07 2.91-1.6 5.03-1.6 2.28 0 4.06.6 5.33 1.8 1.27 1.2 1.91 2.85 1.91 4.95 0 1.91-.57 3.5-1.72 4.77-1.15 1.27-2.76 1.91-4.85 1.91z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        <!-- GitHub -->
+                        {% if site.github_username %}
+                        <li>
+                            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" aria-label="GitHub仓库">
+                                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                                </svg>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <!-- 协议与认证 -->
+                <div class="cert-badges" aria-label="网站认证">
+                    <span class="cert-item">
+                        <svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align:middle">
+                            <path fill="#34a853" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>SSL安全</span>
+                    </span>
+                    
+                    <span class="cert-item">
+                        <svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align:middle">
+                            <path fill="#4285f4" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/>
+                        </svg>
+                        <span>IPv6就绪</span>
+                    </span>
+                </div>
+
+                <!-- 版权声明 -->
+                <div class="copyright" itemprop="copyrightNotice">
+                    <p>
+                        © <span itemprop="copyrightYear">{{ site.time | date: '%Y' }}</span>
+                        <span itemprop="copyrightHolder">{{ site.owner.name }}</span>
+                        <a href="mailto:admin@xingying.us.kg" aria-label="发送邮件">admin@xingying.us.kg</a>
+                        QQ:3981279069
+                        <br>
+                        采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener">CC BY-NC 4.0</a> 协议
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <!-- 性能优化脚本 -->
+    <script defer>
+    // 异步加载非关键资源
+    window.addEventListener('load', function() {
+        // 延迟加载Bootstrap
+        var loadScript = function(src) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.defer = true;
+            document.body.appendChild(script);
+        }
+        loadScript('{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}');
+        
+        // 按需加载高亮
+        if (document.querySelector('pre code')) {
+            loadScript('{{ "/js/highlight.min.js" | prepend: site.baseurl }}');
+            loadScript('{{ "/js/highlight-loader.js" | prepend: site.baseurl }}');
+        }
+    });
+
+    // 原生平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    </script>
 </footer>
 
 <style>
-.site-footer {
-  border-top: 1px solid #eaeaea;
-  padding: 2rem 0;
-  margin-top: 4rem;
+/* 内联样式 */
+:root {
+    --primary-color: #2A5CAA;
+    --accent-color: #5BC0EB;
+    --text-color: #2C3E50;
 }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* 社交图标系统 */
+.social-links .icon-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
-.badges span {
-  padding: 0.25rem 0.75rem;
-  background: #f5f5f5;
-  border-radius: 20px;
-  margin-left: 1rem;
+.social-links .icon {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s ease;
+}
+
+.social-links a:hover .icon {
+    transform: scale(1.2);
+}
+
+/* 认证标识 */
+.cert-badges {
+    text-align: center;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.cert-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+}
+
+/* 版权声明 */
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.copyright a {
+    color: var(--primary-color);
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    gap: 1rem;
-  }
+    .social-links .icon-list {
+        gap: 1rem;
+    }
+    .cert-badges {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
 </style>
