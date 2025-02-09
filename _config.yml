@@ -31,7 +31,7 @@ author:
   name: "星影"
   bio: "穿梭于沙勒与夏莱的Sensei"
   email: "admin@xingying.us.kg"
-  avatar: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%232A5CAA'/%3E%3Cpath d='M30,70 L50,30 L70,70' stroke='%23FFF' stroke-width='8' fill='none'/%3E%3C/svg%3E"
+  avatar: "https://www.bilibili.com/favicon.ico"
 
 # ================== 内容策略 ==================
 defaults:
