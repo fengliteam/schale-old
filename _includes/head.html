@@ -12,4 +12,60 @@
     <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
 
     <!-- 国内CDN优化 -->
-    <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA////AJmZmQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERERERERERERERERERERERERERERERERERERETMzMzERERERM7uzMRERERM7u7MxERERM7u7MzERETO7u7sz
+    <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA////AJmZmQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERERERERERERERERERERERERERERERERERERETMzMzERERERM7uzMRERERM7u7MxERERM7u7MzERETO7u7szMRERM7u7szMREREzu7szMRERETMzMzERERERERERERERERERERERH//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAA=">
+
+    <!-- 内联关键CSS -->
+    <style>
+    :root {
+        --primary: #2A5CAA;
+        --accent: #5BC0EB;
+        --text: #2C3E50;
+    }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
+        line-height: 1.8;
+        color: var(--text);
+    }
+    /* 精简版Bootstrap核心样式 */
+    .container { max-width: 1140px; margin: auto; padding: 0 15px; }
+    .row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
+    .col { flex: 1; padding: 0 15px; }
+    /* 极简版FontAwesome核心图标 */
+    .fa::before { display: inline-block; font-style: normal; }
+    .fa-search::before { content: "🔍"; }
+    .fa-rss::before { content: "📡"; }
+    </style>
+
+    <!-- 异步加载非关键CSS -->
+    <link rel="preload" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}"></noscript>
+
+    <!-- 预连接优化 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "{{ site.title }}",
+        "url": "{{ site.url }}",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "{{ site.url }}/search?q={search_term}",
+            "query-input": "required name=search_term"
+        }
+    }
+    </script>
+
+    <!-- 兼容性处理 -->
+    <!--[if lt IE 9]>
+    <script>
+    // HTML5 Shiv极简版
+    (function(d){var e = d.createElement("div"), a = "header,nav,section,article,footer".split(',');
+    for(var i=0; i<a.length; i++){e.innerHTML += '<' + a[i] + '></' + a[i] + '>'}
+    if(e.innerHTML.length == 0){for(var i=0; i<a.length; i++){d.createElement(a[i])}}}
+    )(document);
+    </script>
+    <![endif]-->
+</head>
