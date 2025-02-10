@@ -1,10 +1,12 @@
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- 移动端优化 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-
-
+<header class="site-header" role="banner">
+    <div class="header-container">
+        <!-- 品牌标识 -->
+        <div class="branding">
+            <a href="/" class="logo-link" aria-label="返回首页">
+                <span class="site-title">沙勒避难所</span>
+                <span class="site-subtitle">数字生存指南</span>
+            </a>
+        </div>
 
 
 
@@ -27,70 +29,174 @@ s.parentNode.insertBefore(el, s);
 
 
 
+        <!-- 桌面导航 -->
+        <nav class="main-nav" aria-label="主导航">
+            <ul class="nav-list">
+                <li><a href="/posts" class="nav-link"><span class="link-icon">📚</span>文章库</a></li>
+                <li><a href="/about" class="nav-link"><span class="link-icon">🛡️</span>关于计划</a></li>
+                <li><a href="/contact" class="nav-link"><span class="link-icon">📨</span>联络站</a></li>
+            </ul>
+        </nav>
 
+        <!-- 移动端切换 -->
+        <button class="mobile-menu-toggle" aria-label="切换导航菜单">
+            <span class="toggle-bar"></span>
+            <span class="toggle-bar"></span>
+            <span class="toggle-bar"></span>
+        </button>
+    </div>
 
-    <!-- 智能SEO优化 -->
-    <meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 155 }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <!-- 移动端菜单 -->
+    <div class="mobile-nav-wrapper">
+        <nav class="mobile-nav" aria-label="移动导航" hidden>
+            <ul class="mobile-nav-list">
+                <li><a href="/posts" class="mobile-nav-link">文章库</a></li>
+                <li><a href="/archive" class="mobile-nav-link">档案室</a></li>
+                <li><a href="/about" class="mobile-nav-link">关于计划</a></li>
+                <li><a href="/contact" class="mobile-nav-link">联络站</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<style>
+/* ====== 页头样式 ====== */
+.site-header {
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 12px rgba(43,108,176,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.branding {
+    flex: 1;
+}
+
+.logo-link {
+    text-decoration: none;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.site-title {
+    font: 600 1.4rem/1.2 'Noto Sans SC', sans-serif;
+    color: #2b6cb0;
+    letter-spacing: -0.03em;
+}
+
+.site-subtitle {
+    font: 0.85rem/1.4 system-ui;
+    color: #718096;
+    margin-top: 0.2rem;
+}
+
+.nav-list {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-link {
+    font: 500 1rem/1.5 system-ui;
+    color: #4a5568;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.25s;
+}
+
+.nav-link:hover {
+    color: #2b6cb0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: #2b6cb0;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.link-icon {
+    margin-right: 0.5rem;
+    opacity: 0.7;
+}
+
+/* 移动端菜单切换 */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #2b6cb0;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    .nav-list { display: none; }
+    .mobile-menu-toggle { display: block; }
     
-    <!-- 标题优化 -->
-    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-
-    <!-- 国内CDN优化 -->
-    <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA////AJmZmQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERERERERERERERERERERERERERERERERERERETMzMzERERERM7uzMRERERM7u7MxERERM7u7MzERETO7u7szMRERM7u7szMREREzu7szMRERETMzMzERERERERERERERERERERERH//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAA=">
-
-    <!-- 内联关键CSS -->
-    <style>
-    :root {
-        --primary: #2A5CAA;
-        --accent: #5BC0EB;
-        --text: #2C3E50;
+    .mobile-nav-wrapper {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
-        line-height: 1.8;
-        color: var(--text);
-    }
-    /* 精简版Bootstrap核心样式 */
-    .container { max-width: 1140px; margin: auto; padding: 0 15px; }
-    .row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
-    .col { flex: 1; padding: 0 15px; }
-    /* 极简版FontAwesome核心图标 */
-    .fa::before { display: inline-block; font-style: normal; }
-    .fa-search::before { content: "🔍"; }
-    .fa-rss::before { content: "📡"; }
-    </style>
-
-    <!-- 异步加载非关键CSS -->
-    <link rel="preload" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}"></noscript>
-
-    <!-- 预连接优化 -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- 结构化数据 -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "{{ site.title }}",
-        "url": "{{ site.url }}",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "{{ site.url }}/search?q={search_term}",
-            "query-input": "required name=search_term"
-        }
+    .mobile-nav-list {
+        list-style: none;
+        padding: 1rem;
     }
-    </script>
+    
+    .mobile-nav-link {
+        display: block;
+        padding: 1rem;
+        color: #4a5568;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.2s;
+    }
+    
+    .mobile-nav-link:hover {
+        background: #f8fafc;
+    }
+}
+</style>
 
-    <!-- 兼容性处理 -->
-    <!--[if lt IE 9]>
-    <script>
-    // HTML5 Shiv极简版
-    (function(d){var e = d.createElement("div"), a = "header,nav,section,article,footer".split(',');
-    for(var i=0; i<a.length; i++){e.innerHTML += '<' + a[i] + '></' + a[i] + '>'}
-    if(e.innerHTML.length == 0){for(var i=0; i<a.length; i++){d.createElement(a[i])}}}
-    )(document);
-    </script>
-    <![endif]-->
-</head>
+<script>
+// 移动菜单交互
+document.querySelector('.mobile-menu-toggle').addEventListener('click', () => {
+    const mobileNav = document.querySelector('.mobile-nav');
+    const isOpen = mobileNav.hidden === false;
+    
+    mobileNav.hidden = !isOpen;
+    document.querySelector('.mobile-menu-toggle').classList.toggle('active', !isOpen);
+});
+</script>
