@@ -1,75 +1,114 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+>
+
 <url>
-<loc>https://schale.us.kg/</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>https://creativecommons.org/licenses/by-nc/4.0/</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/about/</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/archive/</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/about</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/milestone/</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/archive</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/tags/</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/friends</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/blog/2024/12/12/EULA/</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/milestone</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/feed.xml</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/tags</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/Tags/#版权声明</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/aafiles</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/Tags/#免责声明</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/HAPPY</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/Tags/#隐私协议</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/%E7%BD%91%E7%AB%99%E5%B7%B2%E6%B7%BB%E5%8A%A0%E7%AC%A6%E5%90%88IPv6%E4%B8%8ESSL%E7%9A%84%E6%8F%90%E7%A4%BA</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/Tags/#生成式大语言模型警告</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/%E6%9C%AA%E5%AE%9A%E7%A8%BF</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
 <url>
-<loc>https://schale.us.kg/cdn-cgi/l/email-protection</loc>
-<priority>1.0</priority>
-<changefreq>monthly</changefreq>
-<lastmod>2024-12-13</lastmod>
+ <loc>http://schale.us.kg/EULA</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
 </url>
+
+<url>
+ <loc>http://schale.us.kg/feed.xml</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
+</url>
+
+<url>
+ <loc>http://schale.us.kg/cdn-cgi/l/email-protection</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
+</url>
+
+<url>
+ <loc>http://schale.us.kg</loc>
+ <priority>0.6</priority>
+ <lastmod>2025-02-10</lastmod>
+ <changefreq>weekly</changefreq>
+</url>
+
 </urlset>
