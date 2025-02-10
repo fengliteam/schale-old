@@ -1,125 +1,187 @@
+---
+layout: default
+---
+
 <!DOCTYPE html>
-<html lang="zh-CN" dir="ltr">
+<html lang="zh-CN">
 <head>
-    <!-- 核心元数据 -->
+    <!-- 基础元数据 -->
     <meta charset="UTF-8">
     <title>{{ page.title }} | 沙勒避难所</title>
-    <meta name="description" content="{{ page.description | truncate: 155 }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ page.description | default: site.description | truncate: 155 }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <!-- 安全模式样式 -->
-    <style>
-    /* 深度重置 */
-    *, *::before, *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background-repeat: no-repeat;
-        font: inherit;
-        color: inherit;
-    }
-
-    /* 基础排版 */
-    body {
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-        line-height: 1.6;
-        color: #1a202c;
-        background: #fff;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* 安全图标系统 */
-    svg:not([width]) { width: 24px; height: 24px; }
-    </style>
-
-    <!-- 异步加载样式 -->
-    <link rel="preload" href="/css/main.css?v=3.0" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/css/main.css?v=3.0"></noscript>
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="/assets/css/main.css" as="style">
+    <link rel="preload" href="/assets/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 
-<body>
-    <!-- 极简加载提示 -->
-    <div id="loader" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:9999;transition:opacity 0.3s;"></div>
+<body class="post-template">
+    <!-- 调用页头 -->
+    {% include header.html %}
 
-    <article class="post">
-        <!-- 元信息 -->
-        <header class="post-header">
-            <div class="meta">
-                <time datetime="{{ page.date | date_to_xmlschema }}">
-                    <svg aria-hidden="true"><use href="#calendar"/></svg>
-                    {{ page.date | date: "%Y年%m月%d日" }}
-                </time>
-                <span class="author">
-                    <svg aria-hidden="true"><use href="#user"/></svg>
-                    星影
-                </span>
-            </div>
-        </header>
+    <main class="content-wrapper">
+        <article class="markdown-content">
+            <!-- 文章元信息 -->
+            <header class="post-meta">
+                <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y年%m月%d日" }}</time>
+                <span class="reading-time">{{ content | number_of_words | divided_by: 300 }} 分钟阅读</span>
+            </header>
 
-        <!-- 正文内容 -->
-        <main class="post-content">
+            <!-- 正文内容 -->
             {{ content }}
 
-            <!-- AI摘要 -->
+            <!-- AI摘要区块 -->
             {% if page.AI %}
-            <aside class="ai-summary">
-                <h2 class="ai-title">
-                    <svg class="ai-icon"><use href="#ai"/></svg>
-                    智能摘要
-                </h2>
-                <div class="ai-content">
-                    {{ page.AI | markdownify }}
+            <section class="ai-summary">
+                <div class="ai-container">
+                    <h2>📌 智能摘要</h2>
+                    <div class="ai-content">
+                        {{ page.AI | markdownify }}
+                    </div>
+                    <div class="ai-notice">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                        <span>本摘要经过人工审核，建议结合正文参考阅读</span>
+                    </div>
                 </div>
-                <p class="ai-notice">本摘要经人工审核，建议结合正文参考</p>
-            </aside>
+            </section>
             {% endif %}
-        </main>
+        </article>
+    </main>
 
-        <!-- 页脚 -->
-        <footer class="post-footer">
-            <div class="license">
-                <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 协议</a></p>
-            </div>
-        </footer>
-    </article>
+    <!-- 调用页脚 -->
+    {% include footer.html %}
 
-    <!-- 基础图标系统 -->
-    <svg style="display:none">
-        <symbol id="calendar" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></symbol>
-        <symbol id="user" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></symbol>
-        <symbol id="ai" viewBox="0 0 24 24"><path d="M21 14c0-3.1-3.3-5.8-8-6.7V4h1c.6 0 1-.4 1-1s-.4-1-1-1h-4c-.6 0-1 .4-1 1s.4 1 1 1h1v3.3c-4.7.9-8 3.6-8 6.7 0 3 3.1 5.6 7.1 6.6l-.6 1.5c-.1.3 0 .6.3.8.3.1.6 0 .8-.3l.7-1.8h5.4l.7 1.8c.1.3.4.4.8.3.3-.1.4-.4.3-.8l-.6-1.5C17.9 19.6 21 17 21 14zm-9 5.9c-4.1-.2-7-2.3-7-5.9 0-2.3 2.4-4.3 6-5.1v5.1c0 .6.4 1 1 1s1-.4 1-1V8.9c3.6.8 6 2.8 6 5.1 0 3.6-2.9 5.7-7 5.9z"/></symbol>
-    </svg>
+    <!-- Markdown增强样式 -->
+    <style>
+    /* ====== Markdown解析增强 ====== */
+    .markdown-content {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #374151;
+    }
 
-    <!-- 核心功能脚本 -->
-    <script>
-    // 加载完成处理
-    window.addEventListener('load', () => {
-        const loader = document.getElementById('loader');
-        loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 300);
-    });
+    /* 标题层次 */
+    h1 { font-size: 2.2rem; margin: 2.5rem 0 1.5rem; }
+    h2 { font-size: 1.8rem; margin: 2rem 0 1.2rem; border-bottom: 2px solid #e5e7eb; padding-bottom: 0.5rem; }
+    h3 { font-size: 1.5rem; margin: 1.8rem 0 1rem; }
+    h4 { font-size: 1.3rem; margin: 1.5rem 0 0.8rem; }
 
-    // 错误监控
-    window.onerror = (msg, url, line) => {
-        console.error(`Error: ${msg} at ${url}:${line}`);
-    };
-    </script>
+    /* 段落与列表 */
+    p { margin: 1.2rem 0; }
+    ul, ol { margin: 1.5rem 0; padding-left: 2rem; }
+    li { margin: 0.6rem 0; }
 
-    <!-- 结构化数据 -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "{{ page.title }}",
-        "datePublished": "{{ page.date | date_to_xmlschema }}",
-        "author": {
-            "@type": "Person",
-            "name": "星影",
-            "url": "https://schale.us.kg/about"
+    /* 代码区块 */
+    pre {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        overflow-x: auto;
+        margin: 2rem 0;
+        font-size: 0.95em;
+    }
+
+    code {
+        background: rgba(175,184,193,0.2);
+        padding: 0.2em 0.4em;
+        border-radius: 4px;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* 引用块 */
+    blockquote {
+        border-left: 4px solid #3b82f6;
+        background: #f0f4ff;
+        margin: 1.5rem 0;
+        padding: 1rem 1.5rem;
+        border-radius: 0 6px 6px 0;
+    }
+
+    /* 表格增强 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+        padding: 0.8rem;
+        border: 1px solid #e5e7eb;
+    }
+
+    th {
+        background: #f3f4f6;
+        font-weight: 600;
+    }
+
+    /* 响应式优化 */
+    @media (max-width: 768px) {
+        .markdown-content {
+            padding: 1.5rem 1rem;
+            font-size: 1rem;
+        }
+
+        h1 { font-size: 1.8rem; }
+        h2 { font-size: 1.5rem; }
+        
+        pre {
+            margin-left: -1rem;
+            margin-right: -1rem;
+            border-radius: 0;
         }
     }
-    </script>
+    </style>
+
+    <!-- AI摘要样式 -->
+    <style>
+    .ai-summary {
+        background: #f0f4ff;
+        border-radius: 12px;
+        margin: 3rem 0;
+        padding: 2rem;
+        position: relative;
+    }
+
+    .ai-summary h2 {
+        font-size: 1.4rem;
+        color: #1d4ed8;
+        margin: 0 0 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .ai-content {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .ai-notice {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(29,78,216,0.1);
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+        color: #4b5563;
+    }
+
+    @media (max-width: 640px) {
+        .ai-summary {
+            margin-left: -1rem;
+            margin-right: -1rem;
+            border-radius: 0;
+        }
+    }
+    </style>
 </body>
 </html>
