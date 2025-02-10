@@ -1,217 +1,202 @@
----
-layout: default
----
-
-<!-- ===================== 智能SEO引擎 ===================== -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://schale.us.kg{{ page.url }}"
-    },
-    "headline": "{{ page.title }}",
-    "alternativeHeadline": "{{ page.seo_title }}",
-    "image": {
-        "@type": "ImageObject",
-        "url": "{% if page.header-img %}{{ page.header-img | absolute_url }}.webp{% else %}/og-image.webp{% endif %}",
-        "width": 1200,
-        "height": 630
-    },
-    "datePublished": "{{ page.date | date_to_xmlschema }}",
-    "author": {
-        "@type": "Person",
-        "name": "星影",
-        "url": "https://schale.us.kg/about"
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "沙勒避难所",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMkE1Q0NBIi8+PHBhdGggZD0iTTQwIDQwbDQwIDQwLTQwIDQwIiBzdHJva2U9IiNGRkYiIHN0cm9rZS13aWR0aD0iNiIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjIwIiBmaWxsPSIjRkZGIi8+PC9zdmc+",
-            "width": 120,
-            "height": 120
-        }
-    },
-    "description": "{{ page.description | default: site.description | strip_html | truncate: 155 }}",
-    "speakable": {
-        "@type": "SpeakableSpecification",
-        "xPath": [
-            "/html/head/title",
-            "/html/body/article/div[@class='content']"
-        ]
-    }
-}
-</script>
-
+<!-- 在<style>标签内添加以下CSS -->
 <style>
-/* ===================== 美学设计系统 ===================== */
-:root {
-    --primary: #2A5CAA;
-    --accent: #5BC0EB;
-    --text: #2C3E50;
-    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-}
-
-/* 微交互视觉系统 */
-body {
-    font-family: 'Inter', system-ui;
-    line-height: 1.8;
-    color: var(--text);
-    background: #f8f9fa;
-    scroll-behavior: smooth;
-}
-
-.hero-section {
-    background: var(--gradient);
-    padding: 6rem 1rem 4rem;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
-    color: white;
+/* ================== 元信息美学升级 ================== */
+.meta-info {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1.25rem 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.3);
     position: relative;
     overflow: hidden;
 }
 
-.hero-section::after {
+.meta-info::before {
     content: "";
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E");
-    animation: stardust 60s linear infinite;
+    background: linear-gradient(120deg, 
+        rgba(255,255,255,0.4) 0%,
+        rgba(255,255,255,0.2) 100%);
+    z-index: -1;
 }
 
-@keyframes stardust {
-    from { transform: translate(0,0); }
-    to { transform: translate(-50%,-50%); }
-}
-
-.content-card {
-    background: rgba(255,255,255,0.98);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    max-width: 800px;
-    margin: -80px auto 3rem;
-    padding: 3rem;
-    transform: translateY(0);
-    transition: transform 0.3s ease;
-}
-
-.content-card:hover {
-    transform: translateY(-5px);
-}
-
-/* 深度SEO优化样式 */
-h1 {
-    font-weight: 700;
-    font-size: 2.5rem;
-    text-align: center;
-    margin: 0 0 1rem;
-    line-height: 1.2;
-}
-
-h1::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: var(--accent);
-    margin: 1rem auto;
-    border-radius: 2px;
-}
-
-/* 必应速度优化 */
-img {
-    width: 100%;
-    height: auto;
+.meta-info time, 
+.meta-info span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.6);
     border-radius: 8px;
-    margin: 2rem 0;
-    background: linear-gradient(90deg, #f1f3f5 25%, #f8f9fa 50%, #f1f3f5 75%);
-    background-size: 400% 400%;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-img[loading="lazy"] {
-    opacity: 0;
-    animation: img-fadein 0.5s ease forwards;
+.meta-info span.separator {
+    background: none;
+    padding: 0;
+    color: rgba(0,0,0,0.3);
 }
 
-@keyframes img-fadein {
-    to { opacity: 1; background: none; }
+.meta-info time:hover,
+.meta-info span:not(.separator):hover {
+    background: rgba(255,255,255,0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+/* ================== 增强型页脚设计 ================== */
+.article-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.license-info, 
+.contact-info {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 
+        0 8px 32px rgba(0,0,0,0.05),
+        inset 0 0 12px rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.license-info::before,
+.contact-info::before {
+    content: "";
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(
+        from 45deg,
+        rgba(91,192,235,0.1) 0%,
+        rgba(42,92,170,0.15) 20%,
+        rgba(255,255,255,0.2) 50%,
+        rgba(42,92,170,0.15) 80%,
+        rgba(91,192,235,0.1) 100%
+    );
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+.license-info h3,
+.contact-info h3 {
+    font-size: 1.25rem;
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--primary);
+}
+
+.license-info h3::before {
+    content: "📜";
+    font-size: 1.5em;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.contact-info h3::before {
+    content: "📮";
+    font-size: 1.5em;
+}
+
+.license-info p,
+.contact-info p {
+    line-height: 1.6;
+    color: rgba(0,0,0,0.8);
+    margin: 0;
+}
+
+.license-info a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 2px solid rgba(91,192,235,0.3);
+    transition: all 0.3s ease;
+}
+
+.license-info a:hover {
+    border-bottom-color: var(--accent);
+    text-shadow: 0 2px 8px rgba(91,192,235,0.2);
+}
+
+/* 响应式优化 */
 @media (max-width: 768px) {
-    .content-card { padding: 2rem; margin: -60px auto 2rem; }
-    h1 { font-size: 2rem; }
+    .meta-info {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+    }
+
+    .article-footer {
+        grid-template-columns: 1fr;
+    }
+
+    .license-info,
+    .contact-info {
+        padding: 1.5rem;
+    }
 }
 </style>
 
-<!-- ===================== 视觉交互层 ===================== -->
-<section class="hero-section">
-    <div class="logo" style="
-        width: 100px; height: 100px;
-        margin: 0 auto 2rem;
-        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMkE1Q0NBIi8+PHBhdGggZD0iTTQwIDQwbDQwIDQwLTQwIDQwIiBzdHJva2U9IiNGRkYiIHN0cm9rZS13aWR0aD0iNiIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjIwIiBmaWxsPSIjRkZGIi8+PC9zdmc+')
-        no-repeat center/contain">
+<!-- 更新元信息部分的HTML -->
+<div class="meta-info">
+    <time datetime="{{ page.date | date_to_xmlschema }}">
+        <svg class="icon" viewBox="0 0 24 24" width="18" height="18">
+            <path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM7 12h5v5H7v-5z"/>
+        </svg>
+        {{ page.date | date: "%Y/%m/%d" }}
+    </time>
+    <span class="separator">•</span>
+    <span>
+        <svg class="icon" viewBox="0 0 24 24" width="18" height="18">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+        </svg>
+        作者：星影
+    </span>
+</div>
+
+<!-- 更新页脚部分的HTML -->
+<footer class="article-footer">
+    <div class="license-info">
+        <h3>内容许可</h3>
+        <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0 国际许可协议</a>，转载需注明来源并保留原文链接。</p>
     </div>
     
-    <h1 itemprop="headline">{{ page.title }}</h1>
-    {% if page.seo_title %}<div class="seo-subtitle">{{ page.seo_title }}</div>{% endif %}
-</section>
-
-<main class="content-card">
-    <!-- 智能资源加载 -->
-    <script>
-    (function(){
-        // 必应速度优化：首屏资源预加载
-        const criticalAssets = [
-            '{{ page.header-img | default: "/default-og.webp" }}',
-            '/assets/css/fonts.woff2'
-        ];
-        criticalAssets.forEach(url => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = url.includes('.woff2') ? 'font' : 'image';
-            link.href = url;
-            document.head.appendChild(link);
-        });
-
-        // WebP智能转换系统
-        //document.querySelectorAll('img').forEach(img => {
-            //const src = img.getAttribute('src');
-           // if (src && !src.endsWith('.webp')) {
-             //   const webpSrc = src.replace(/\.(jpe?g|png)/i, '.webp');
-              //  img.setAttribute('src', webpSrc);
-                //img.setAttribute('srcset', `${webpSrc} 1x, ${webpSrc.replace('.webp','@2x.webp')} 2x`);
-          //  }
-         //   img.setAttribute('loading', 'lazy');
-          //  img.setAttribute('decoding', 'async');
-        });
-    })();
-    </script>
-
-    <article>
-        <div class="meta-info">
-            <time datetime="{{ page.date | date_to_xmlschema }}">📅 {{ page.date | date: "%Y/%m/%d" }}</time>
-            <span>•</span>
-            <span>✍️ 作者：星影</span>
-        </div>
-
-        {{ content }}
-
-        <!-- 增强型页脚 -->
-        <footer class="article-footer">
-            <div class="license-info">
-                <h3>📜 内容许可</h3>
-                <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0 国际许可协议</a>，转载需注明来源。</p>
-            </div>
-            <div class="contact-info">
-                <h3>📮 联系我们</h3>
-                <p>邮箱：<a href="mailto:admin@xingying.us.kg">admin@xingying.us.kg</a><br>
-                   QQ：3981279069</p>
-            </div>
-        </footer>
-    </article>
-</main>
+    <div class="contact-info">
+        <h3>联系通道</h3>
+        <p>
+            <span class="contact-method">
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                    <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                </svg>
+                <a href="mailto:admin@xingying.us.kg">admin@xingying.us.kg</a>
+            </span>
+            <span class="contact-method">
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                    <path fill="currentColor" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                </svg>
+                QQ：3981279069
+            </span>
+        </p>
+    </div>
+</footer>
