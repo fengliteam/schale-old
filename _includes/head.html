@@ -1,202 +1,209 @@
-<header class="site-header" role="banner">
-    <div class="header-container">
-        <!-- 品牌标识 -->
-        <div class="branding">
-            <a href="/" class="logo-link" aria-label="返回首页">
-                <span class="site-title">沙勒避难所</span>
-                <span class="site-subtitle">数字生存指南</span>
+<header class="site-header" x-data="{ isOpen: false }">
+    <!-- 桌面导航 -->
+    <nav class="desktop-nav" aria-label="主要导航">
+        <div class="nav-container">
+            <!-- 品牌标识 -->
+            <a href="/" class="brand" @mouseenter="hoverLogo = true" @mouseleave="hoverLogo = false">
+                <span class="logo-text">沙勒避难所</span>
+                <span class="logo-sub">数字生存指南</span>
             </a>
-        </div>
 
-
-
-    <script>
-(function(){
-var el = document.createElement("script");
-el.src = "https://lf1-cdn-tos.bytegoofy.com/goofy/ttzz/push.js?cb7d26c59867d807f708ee465815dee20cfc71da30ab495f2ae05ad81368b46dc112ff4abe50733e0ff1e1071a0fdc024b166ea2a296840a50a5288f35e2ca42";
-el.id = "ttzz";
-var s = document.getElementsByTagName("script")[0];
-s.parentNode.insertBefore(el, s);
-})(window)
-</script>
-
-
-
-<meta property="bytedance:published_time" content="2014-12-11T12:28:44+01:00" />
-<meta property="bytedance:lrDate_time" content="2017-03-13T15:01:40+01:00" />
-<meta property="bytedance:updated_time" content="2017-03-13T15:01:40+01:00" />
-
-
-
-
-        <!-- 桌面导航 -->
-        <nav class="main-nav" aria-label="主导航">
+            <!-- 主菜单 -->
             <ul class="nav-list">
-                <li><a href="/posts" class="nav-link"><span class="link-icon">📚</span>文章库</a></li>
-                <li><a href="/about" class="nav-link"><span class="link-icon">🛡️</span>关于计划</a></li>
-                <li><a href="/contact" class="nav-link"><span class="link-icon">📨</span>联络站</a></li>
+                <li class="nav-item" x-data="{ showSub: false }">
+                    <a href="/milestone" class="nav-link">里程碑</a>
+                    <div class="submenu">
+                        <a href="/aafiles" class="sub-item">档案库</a>
+                        <a href="/HAPPY" class="sub-item">特别企划</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/tags" class="nav-link">标签云</a>
+                </li>
+                <li class="nav-item" x-data="{ showSub: false }">
+                    <a href="/docs" class="nav-link">文档中心</a>
+                    <div class="submenu">
+                        <a href="/%E7%BD%91%E7%AB%99%E5%B7%B2%E6%B7%BB%E5%8A%A0%E7%AC%A6%E5%90%88IPv6%E4%B8%8ESSL%E7%9A%84%E6%8F%90%E7%A4%BA" 
+                           class="sub-item">网络配置</a>
+                        <a href="/EULA" class="sub-item">用户协议</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/%E6%9C%AA%E5%AE%9A%E7%A8%BF" class="nav-link">创作中心</a>
+                </li>
             </ul>
+
+            <!-- 功能入口 -->
+            <div class="nav-utils">
+                <a href="/feed.xml" class="util-link rss-link">
+                    <svg class="icon"><use href="#rss"/></svg>
+                </a>
+                <button class="mobile-toggle" @click="isOpen = !isOpen">
+                    <span class="toggle-bar" :class="{ 'open': isOpen }"></span>
+                    <span class="toggle-bar" :class="{ 'open': isOpen }"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 移动菜单 -->
+    <transition name="nav-slide">
+        <nav class="mobile-nav" v-show="isOpen" aria-label="移动导航">
+            <div class="mobile-container">
+                <a href="/milestone" class="mobile-link">里程碑</a>
+                <a href="/aafiles" class="mobile-sub">档案库</a>
+                <a href="/HAPPY" class="mobile-sub">特别企划</a>
+                <a href="/tags" class="mobile-link">标签云</a>
+                <a href="/docs" class="mobile-link">文档中心</a>
+                <a href="/%E7%BD%91%E7%AB%99%E5%B7%B2%E6%B7%BB%E5%8A%A0%E7%AC%A6%E5%90%88IPv6%E4%B8%8ESSL%E7%9A%84%E6%8F%90%E7%A4%BA" 
+                   class="mobile-sub">网络配置</a>
+                <a href="/EULA" class="mobile-sub">用户协议</a>
+                <a href="/%E6%9C%AA%E5%AE%9A%E7%A8%BF" class="mobile-link">创作中心</a>
+            </div>
         </nav>
+    </transition>
 
-        <!-- 移动端切换 -->
-        <button class="mobile-menu-toggle" aria-label="切换导航菜单">
-            <span class="toggle-bar"></span>
-            <span class="toggle-bar"></span>
-            <span class="toggle-bar"></span>
-        </button>
-    </div>
+    <style>
+    /* ====== 动态导航系统 ====== */
+    .desktop-nav {
+        background: rgba(255,255,255,0.97);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
 
-    <!-- 移动端菜单 -->
-    <div class="mobile-nav-wrapper">
-        <nav class="mobile-nav" aria-label="移动导航" hidden>
-            <ul class="mobile-nav-list">
-                <li><a href="/posts" class="mobile-nav-link">文章库</a></li>
-                <li><a href="/archive" class="mobile-nav-link">档案室</a></li>
-                <li><a href="/about" class="mobile-nav-link">关于计划</a></li>
-                <li><a href="/contact" class="mobile-nav-link">联络站</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    .nav-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        padding: 1rem 2rem;
+    }
 
-<style>
-/* ====== 页头样式 ====== */
-.site-header {
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 12px rgba(43,108,176,0.08);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+    .brand {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-.header-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    .brand:hover {
+        transform: translateX(5px);
+    }
 
-.branding {
-    flex: 1;
-}
+    .logo-text {
+        font: 600 1.4rem/1.2 'Noto Sans SC', sans-serif;
+        color: #2b6cb0;
+        letter-spacing: -0.03em;
+        transition: color 0.3s;
+    }
 
-.logo-link {
-    text-decoration: none;
-    display: inline-flex;
-    flex-direction: column;
-}
+    .logo-sub {
+        font-size: 0.85rem;
+        color: #718096;
+        margin-top: 0.2rem;
+    }
 
-.site-title {
-    font: 600 1.4rem/1.2 'Noto Sans SC', sans-serif;
-    color: #2b6cb0;
-    letter-spacing: -0.03em;
-}
+    .nav-list {
+        display: flex;
+        gap: 2rem;
+        margin-left: 3rem;
+    }
 
-.site-subtitle {
-    font: 0.85rem/1.4 system-ui;
-    color: #718096;
-    margin-top: 0.2rem;
-}
+    .nav-item {
+        position: relative;
+        padding: 0.5rem 0;
+    }
 
-.nav-list {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-}
+    .nav-link {
+        color: #374151;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-.nav-link {
-    font: 500 1rem/1.5 system-ui;
-    color: #4a5568;
-    text-decoration: none;
-    position: relative;
-    transition: color 0.25s;
-}
+    .nav-link:hover {
+        background: #f3f4f6;
+        color: #2563eb;
+    }
 
-.nav-link:hover {
-    color: #2b6cb0;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    background: #2b6cb0;
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.link-icon {
-    margin-right: 0.5rem;
-    opacity: 0.7;
-}
-
-/* 移动端菜单切换 */
-.mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-}
-
-.toggle-bar {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: #2b6cb0;
-    margin: 5px 0;
-    transition: 0.3s;
-}
-
-@media (max-width: 768px) {
-    .nav-list { display: none; }
-    .mobile-menu-toggle { display: block; }
-    
-    .mobile-nav-wrapper {
+    .submenu {
         position: absolute;
         top: 100%;
         left: 0;
-        right: 0;
         background: white;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        padding: 0.5rem;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        pointer-events: none;
     }
-    
-    .mobile-nav-list {
-        list-style: none;
-        padding: 1rem;
+
+    .nav-item:hover .submenu {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
-    
-    .mobile-nav-link {
+
+    .sub-item {
         display: block;
+        padding: 0.75rem 1.5rem;
+        white-space: nowrap;
+        color: #4b5563;
+        transition: background 0.2s;
+    }
+
+    .sub-item:hover {
+        background: #f8fafc;
+        border-radius: 4px;
+    }
+
+    /* 移动菜单动画 */
+    .nav-slide-enter-active,
+    .nav-slide-leave-active {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    opacity 0.3s ease;
+    }
+
+    .nav-slide-enter-from,
+    .nav-slide-leave-to {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    .mobile-nav {
+        background: white;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: absolute;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .mobile-container {
         padding: 1rem;
-        color: #4a5568;
-        text-decoration: none;
+        display: grid;
+        gap: 0.5rem;
+    }
+
+    .mobile-link {
+        padding: 1rem;
+        color: #1f2937;
         border-radius: 6px;
         transition: background 0.2s;
     }
-    
-    .mobile-nav-link:hover {
-        background: #f8fafc;
-    }
-}
-</style>
 
-<script>
-// 移动菜单交互
-document.querySelector('.mobile-menu-toggle').addEventListener('click', () => {
-    const mobileNav = document.querySelector('.mobile-nav');
-    const isOpen = mobileNav.hidden === false;
-    
-    mobileNav.hidden = !isOpen;
-    document.querySelector('.mobile-menu-toggle').classList.toggle('active', !isOpen);
-});
-</script>
+    .mobile-sub {
+        @apply pl-8 text-gray-600;
+    }
+
+    @media (max-width: 1024px) {
+        .nav-list { display: none; }
+        .mobile-toggle { display: block; }
+    }
+    </style>
+</header>
