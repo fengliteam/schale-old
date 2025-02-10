@@ -1,174 +1,157 @@
-<!-- Footer -->
-<footer itemscope itemtype="http://schema.org/WPFooter">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <!-- 社交链接优化 -->
-                <div class="social-links" aria-label="社交媒体链接">
-                    <ul class="icon-list">
-                        <!-- RSS -->
-                        <li>
-                            <a href="{{ "/feed.xml" | prepend: site.baseurl }}" aria-label="RSS订阅" rel="noopener">
-                                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="currentColor" d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2zm-7 0c0-3.313-2.687-6-6-6v2c2.206 0 4 1.794 4 4h2zM4 11a1 1 0 100 2 1 1 0 000-2z"/>
-                                </svg>
-                            </a>
-                        </li>
+<footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+        <!-- 网站地图 -->
+        <div class="footer-section">
+            <h3 class="footer-heading">站点地图</h3>
+            <ul class="footer-links">
+                <li><a href="/sitemap.xml" class="footer-link">XML站点地图</a></li>
+                <li><a href="/archive" class="footer-link">时间线归档</a></li>
+                <li><a href="/tags" class="footer-link">标签云集</a></li>
+            </ul>
+        </div>
 
-                        <!-- 知乎 -->
-                        {% if site.zhihu_username %}
-                        <li>
-                            <a href="https://www.zhihu.com/people/{{ site.zhihu_username }}" target="_blank" rel="noopener" aria-label="知乎主页">
-                                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="currentColor" d="M12.344 17.963c-1.627 0-3.037-.28-4.238-.83-1.15-.53-2.15-1.3-2.92-2.26-.8-1.01-1.24-2.17-1.24-3.44 0-1.25.42-2.4 1.25-3.37.84-.98 2-1.47 3.49-1.47 1.38 0 2.48.45 3.29 1.32.82.89 1.23 2.05 1.23 3.47 0 .94-.19 1.77-.57 2.48-.38.7-.9 1.27-1.55 1.69-.65.42-1.37.63-2.15.63-.74 0-1.38-.17-1.94-.5-.56-.34-1-.8-1.32-1.4l-1.93.84c.4.91 1.05 1.63 1.94 2.15.9.53 1.95.79 3.16.79 1.57 0 2.89-.46 3.94-1.36 1.06-.91 1.59-2.13 1.59-3.65 0-1.76-.57-3.16-1.72-4.18-1.15-1.03-2.72-1.54-4.73-1.54-2.09 0-3.76.57-5.02 1.7-1.26 1.14-1.89 2.7-1.89 4.68 0 1.72.49 3.19 1.46 4.39.97 1.2 2.33 2.03 4.07 2.48 1.74.45 3.67.68 5.77.68h3.79v-2.04h-3.42c-1.79 0-3.37-.15-4.75-.45-1.38-.3-2.57-.82-3.55-1.56v-1.98c.92.72 2.03 1.27 3.33 1.64 1.3.37 2.75.56 4.34.56 1.67 0 3.11-.25 4.32-.76 1.21-.5 2.15-1.23 2.83-2.17.68-.94 1.02-2.05 1.02-3.33 0-1.45-.41-2.66-1.24-3.62-.83-.96-2.03-1.44-3.6-1.44-1.5 0-2.68.43-3.53 1.3-.85.87-1.28 2.07-1.28 3.6 0 1.06.24 1.98.73 2.75.48.77 1.16 1.34 2.03 1.72.87.38 1.85.57 2.94.57.93 0 1.76-.17 2.5-.52.73-.35 1.33-.83 1.79-1.45l1.93.84c-.6.95-1.43 1.68-2.5 2.19-1.07.51-2.31.77-3.72.77-1.91 0-3.49-.47-4.74-1.41-1.25-.94-1.87-2.25-1.87-3.93 0-1.93.62-3.43 1.85-4.5 1.23-1.07 2.91-1.6 5.03-1.6 2.28 0 4.06.6 5.33 1.8 1.27 1.2 1.91 2.85 1.91 4.95 0 1.91-.57 3.5-1.72 4.77-1.15 1.27-2.76 1.91-4.85 1.91z"/>
-                                </svg>
-                            </a>
-                        </li>
-                        {% endif %}
+        <!-- 支持项目 -->
+        <div class="footer-section">
+            <h3 class="footer-heading">支持我们</h3>
+            <ul class="footer-links">
+                <li><a href="/sponsor" class="footer-link">赞助计划</a></li>
+                <li><a href="/contribute" class="footer-link">参与建设</a></li>
+                <li><a href="/report" class="footer-link">问题反馈</a></li>
+            </ul>
+        </div>
 
-                        <!-- GitHub -->
-                        {% if site.github_username %}
-                        <li>
-                            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" aria-label="GitHub仓库">
-                                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                                </svg>
-                            </a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-
-                <!-- 协议与认证 -->
-                <div class="cert-badges" aria-label="网站认证">
-                    <span class="cert-item">
-                        <svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align:middle">
-                            <path fill="#34a853" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                        <span>SSL安全</span>
-                    </span>
-                    
-                    <span class="cert-item">
-                        <svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align:middle">
-                            <path fill="#4285f4" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/>
-                        </svg>
-                        <span>IPv6就绪</span>
-                    </span>
-                </div>
-
-                <!-- 版权声明 -->
-                <div class="copyright" itemprop="copyrightNotice">
-                    <p>
-                        © <span itemprop="copyrightYear">{{ site.time | date: '%Y' }}</span>
-                        <span itemprop="copyrightHolder">{{ site.owner.name }}</span>
-                        <a href="mailto:admin@xingying.us.kg" aria-label="发送邮件">admin@xingying.us.kg</a>
-                        QQ:3981279069
-                        <br>
-                        采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener">CC BY-NC 4.0</a> 协议
-                    </p>
-                </div>
+        <!-- 社交网络 -->
+        <div class="footer-section">
+            <h3 class="footer-heading">保持联系</h3>
+            <div class="social-links">
+                <a href="mailto:admin@schale.us.kg" class="social-link" aria-label="发送邮件">
+                    <svg class="social-icon"><use href="#email"/></svg>
+                </a>
+                <a href="https://github.com/schale" class="social-link" aria-label="GitHub">
+                    <svg class="social-icon"><use href="#github"/></svg>
+                </a>
+                <a href="/rss.xml" class="social-link" aria-label="RSS订阅">
+                    <svg class="social-icon"><use href="#rss"/></svg>
+                </a>
             </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="footer-copyright">
+            <p>© 2024 沙勒避难所 - 遵循 <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 协议</p>
+            <p>由星影构建 · 服务器运行时间: <span id="uptime">加载中...</span></p>
         </div>
     </div>
 
-    <!-- 性能优化脚本 -->
-    <script defer>
-    // 异步加载非关键资源
-    window.addEventListener('load', function() {
-        // 延迟加载Bootstrap
-        var loadScript = function(src) {
-            var script = document.createElement('script');
-            script.src = src;
-            script.defer = true;
-            document.body.appendChild(script);
-        }
-        loadScript('{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}');
-        
-        // 按需加载高亮
-        if (document.querySelector('pre code')) {
-            loadScript('{{ "/js/highlight.min.js" | prepend: site.baseurl }}');
-            loadScript('{{ "/js/highlight-loader.js" | prepend: site.baseurl }}');
-        }
-    });
-
-    // 原生平滑滚动
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-    </script>
+    <!-- 页脚图标 -->
+    <svg style="display:none">
+        <symbol id="email" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.7l-8 5.3-8-5.3V6h16v2.7z"/></symbol>
+        <symbol id="github" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.07.63-1.32-2.22-.25-4.55-1.11-4.55-4.92 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.26.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.68 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></symbol>
+        <symbol id="rss" viewBox="0 0 24 24"><path d="M6 18c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1zM4 10v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1zm6-7C7.25 3 3 7.25 3 12c0 .55.45 1 1 1s1-.45 1-1c0-4.42 3.58-8 8-8 .55 0 1-.45 1-1s-.45-1-1-1zm0 4c-2.76 0-5 2.24-5 5 0 .55.45 1 1 1s1-.45 1-1c0-1.65 1.35-3 3-3 .55 0 1-.45 1-1s-.45-1-1-1z"/></symbol>
+    </svg>
 </footer>
 
 <style>
-/* 内联样式 */
-:root {
-    --primary-color: #2A5CAA;
-    --accent-color: #5BC0EB;
-    --text-color: #2C3E50;
+/* ====== 页脚样式 ====== */
+.site-footer {
+    background: #2b6cb0;
+    color: rgba(255,255,255,0.9);
+    margin-top: 4rem;
+    padding: 3rem 2rem 2rem;
+    position: relative;
 }
 
-/* 社交图标系统 */
-.social-links .icon-list {
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(43,108,176,0.1), transparent);
+}
+
+.footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+}
+
+.footer-heading {
+    font: 600 1.1rem/1.4 system-ui;
+    color: white;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(255,255,255,0.15);
+}
+
+.footer-links {
     list-style: none;
-    padding: 0;
+}
+
+.footer-link {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    display: block;
+    transition: opacity 0.2s;
+}
+
+.footer-link:hover {
+    opacity: 0.9;
+}
+
+.social-links {
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
+    margin-top: 1rem;
 }
 
-.social-links .icon {
-    width: 32px;
-    height: 32px;
-    transition: transform 0.2s ease;
+.social-icon {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+    transition: transform 0.2s;
 }
 
-.social-links a:hover .icon {
-    transform: scale(1.2);
+.social-link:hover .social-icon {
+    transform: translateY(-2px);
 }
 
-/* 认证标识 */
-.cert-badges {
+.footer-copyright {
+    grid-column: 1 / -1;
     text-align: center;
-    margin: 1rem 0;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.cert-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: rgba(255,255,255,0.1);
-    border-radius: 20px;
-}
-
-/* 版权声明 */
-.copyright {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 0.9em;
-    color: #666;
-}
-
-.copyright a {
-    color: var(--primary-color);
-    text-decoration: underline;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 
 @media (max-width: 768px) {
-    .social-links .icon-list {
-        gap: 1rem;
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
-    .cert-badges {
-        flex-direction: column;
-        gap: 0.5rem;
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
     }
 }
 </style>
+
+<script>
+// 运行时间计算
+const startDate = new Date('2024-01-01');
+setInterval(() => {
+    const diff = Date.now() - startDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById('uptime').textContent = `${days} 天`;
+}, 1000);
+</script>
