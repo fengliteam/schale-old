@@ -1,6 +1,3 @@
-<body>
-    {% include header.html %}
-
 
 /* 基础排版增强 */
 .post {
@@ -108,8 +105,4 @@
 }
 
     
-    {% include footer.html %}
-    
-    <!-- 加载动画引擎 -->
-    <script defer src="https://unpkg.com/alpinejs@3.13.0/dist/cdn.min.js"></script>
-</body>
+ 
