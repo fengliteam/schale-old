@@ -97,18 +97,18 @@ body {
     <script defer>
     window.addEventListener('load', () => {
         // WebP优先加载
-        //document.querySelectorAll('img').forEach(img => {
-          //  if (!img.src.endsWith('.webp')) {
-           //     img.src = img.src.replace(/\.(jpe?g|png)/i, '.webp');
+        document.querySelectorAll('img').forEach(img => {
+            if (!img.src.endsWith('.webp')) {
+                img.src = img.src.replace(/\.(jpe?g|png)/i, '.webp');
             }
-        //    img.loading = 'lazy';
+            img.loading = 'lazy';
         });
 
         // 首屏图片预加载
         const firstScreenImages = document.querySelectorAll('img[loading="eager"]');
         firstScreenImages.forEach(img => {
             const imgObj = new Image();
-            imgObj.src = img.dataset.src;
+            imgObj.src = img.dataset.src || img.src;
         });
     });
     </script>
