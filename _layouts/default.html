@@ -47,6 +47,13 @@ body {
         backdrop-filter: blur(10px);
     }
 }
+
+/* 优化CLS：为图片预留空间 */
+img {
+    width: 100%; /* 确保图片宽度适应容器 */
+    height: auto; /* 高度自动，保持比例 */
+    display: block; /* 避免inline元素造成的布局偏移 */
+}
 </style>
 
 <body ontouchstart="">
@@ -109,6 +116,9 @@ body {
         firstScreenImages.forEach(img => {
             const imgObj = new Image();
             imgObj.src = img.dataset.src || img.src;
+            imgObj.onload = () => {
+                img.src = imgObj.src;
+            };
         });
     });
     </script>
