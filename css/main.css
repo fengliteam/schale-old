@@ -1,59 +1,72 @@
-/* ========== 专业设计系统 ========== */
-:root {
-  --primary: {{ site.design.primary_color }};
-  --accent: {{ site.design.accent_color }};
-  --text: #2C3E50;
-  --text-light: #666;
-  --border: #eaeaea;
+/* 基础排版增强 */
+.post {
+    max-width: 760px;
+    margin: 2rem auto;
+    padding: 0 1rem;
 }
 
-/* ========== 基础布局 ========== */
-.container {
-  width: min(100% - 2rem, 1200px);
-  margin: 0 auto;
-  padding-top: 4rem;
-}
-
-/* ========== 文章样式 ========== */
 .post-header {
-  padding: 4rem 0;
-  background: linear-gradient(45deg, var(--primary), var(--accent));
-  color: white;
-  margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
-.post-header h1 {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  max-width: 800px;
-  margin: 0 auto;
+.meta {
+    display: flex;
+    gap: 1.5rem;
+    color: #4a5568;
 }
 
-.post-meta {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  opacity: 0.9;
+.meta svg {
+    margin-right: 0.5rem;
 }
 
-.post-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
-
-/* ========== 响应式设计 ========== */
-@media (max-width: 768px) {
-  .post-header {
-    padding: 2rem 1rem;
-  }
-  
-  .post-header h1 {
-    font-size: 1.75rem;
-  }
-  
-  .post-content {
+/* AI摘要模块 */
+.ai-summary {
+    background: #f8fafc;
+    border-left: 4px solid #2b6cb0;
     padding: 1.5rem;
-  }
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+}
+
+.ai-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #2b6cb0;
+    margin-bottom: 1rem;
+}
+
+.ai-content {
+    line-height: 1.7;
+}
+
+.ai-notice {
+    margin-top: 1rem;
+    font-size: 0.9em;
+    color: #718096;
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+    .post {
+        padding: 0 0.5rem;
+    }
+
+    .meta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .ai-summary {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+        border-radius: 0;
+    }
+}
+
+/* 打印优化 */
+@media print {
+    .ai-summary {
+        page-break-inside: avoid;
+    }
 }
