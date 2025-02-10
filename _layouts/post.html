@@ -1,175 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 预加载关键CSS -->
+    <link rel="preload" href="critical.css" as="style">
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{ page.seo_title }}",
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        "author": {
+            "@type": "Person",
+            "name": "星影",
+            "email": "admin@xingying.us.kg",
+            "url": "https://yourdomain.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Your Site Name",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://yourdomain.com/logo.png"
+            }
+        },
+        "description": "{{ page.description }}"
+    }
+    </script>
+</head>
+<body>
+    <!-- 加载提示 -->
+    <div id="loading" aria-live="polite">
+        <div class="loading-spinner"></div>
+        <p class="sr-only">内容加载中...</p>
+    </div>
+
+    <!-- 优化后的元信息 -->
+    <aside class="meta-section" aria-label="文章元信息">
+        <div class="meta-card">
+            <time datetime="{{ page.date | date_to_xmlschema }}">
+                <svg aria-hidden="true" focusable="false" width="20" height="20">
+                    <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
+                </svg>
+                <span>{{ page.date | date: "%Y年%m月%d日" }}</span>
+            </time>
+            <div class="author-badge" itemscope itemtype="https://schema.org/Person">
+                <svg aria-hidden="true" focusable="false" width="20" height="20">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                </svg>
+                <span itemprop="name">星影</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 正文容器 -->
+    <main id="content" class="article-container" aria-label="文章正文">
+        {{ content }}
+    </main>
+
+    <!-- 独立许可区块 -->
+    <section class="license-section" aria-labelledby="license-heading">
+        <div class="info-card">
+            <h2 id="license-heading"><span aria-hidden="true">📜</span> 内容许可</h2>
+            <p>本文遵循 <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener noreferrer">CC BY-NC 4.0 协议</a>，转载需显式标注来源并保留内容完整性。</p>
+        </div>
+    </section>
+
+    <!-- 独立联系区块 -->
+    <section class="contact-section" aria-labelledby="contact-heading">
+        <div class="info-card">
+            <h2 id="contact-heading"><span aria-hidden="true">📬</span> 联系作者</h2>
+            <ul class="contact-list">
+                <li>
+                    <a href="mailto:admin@xingying.us.kg" class="contact-link">
+                        <svg aria-hidden="true" focusable="false" width="20" height="20">
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                        </svg>
+                        <span>admin@xingying.us.kg</span>
+                    </a>
+                </li>
+                <li>
+                    <span class="contact-link">
+                        <svg aria-hidden="true" focusable="false" width="20" height="20">
+                            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                        </svg>
+                        <span>QQ: 3981279069</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
 <style>
+/* ========== 极简性能优化样式 ========== */
 :root {
-    --primary: #2A5CAA;    /* 深邃蓝 */
-    --accent: #5BC0EB;     /* 活力蓝 */
-    --text: #2D3748;       /* 高对比度文本 */
-    --bg: #F8FAFC;         /* 柔和背景 */
-    --card-bg: rgba(255,255,255,0.98); /* 高可读卡片 */
+    --primary: #1a365d;    /* WCAG AA 标准深蓝 */
+    --accent: #2b6cb0;     /* 高对比度强调色 */
+    --text: #2d3748;       /* 易读文本色 */
+    --bg: #fff;            /* 纯白背景 */
+    --card-bg: #f7fafc;    /* 柔和卡片背景 */
+    --radius: 12px;        /* 统一圆角 */
 }
 
-/* ========== 全局优化 ========== */
+/* 基础重置 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
 }
 
-.article-content {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+/* 加载动画 */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+    display: grid;
+    place-items: center;
+    z-index: 999;
+    transition: opacity 0.3s;
 }
 
-/* ========== 响应式元信息卡片 ========== */
-.meta-info {
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    border-radius: 14px;
-    padding: 1.25rem;
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--card-bg);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+/* 内容容器 */
+.article-container {
+    max-width: min(760px, 90%);
     margin: 2rem auto;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+    padding: 0 1rem;
+}
+
+/* 元信息卡片 */
+.meta-section {
+    margin: 2rem 0;
+}
+
+.meta-card {
+    background: var(--card-bg);
+    padding: 1.25rem;
+    border-radius: var(--radius);
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    max-width: 760px;
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.05);
+    max-width: min(760px, 90%);
+    margin: 0 auto;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-.meta-info:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(42,92,170,0.1);
-}
-
-/* 时间标签 */
-.meta-info time {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 1rem;
-    background: rgba(42,92,170,0.05);
-    border-radius: 8px;
-    font-size: 0.9rem;
-    color: var(--primary);
-}
-
-/* 作者卡片 */
-.author-card {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 1rem;
-    background: rgba(91,192,235,0.05);
-    border-radius: 8px;
-    font-weight: 500;
-    color: var(--primary);
-}
-
-/* ========== 页脚区块优化 ========== */
-.article-footer {
-    max-width: 760px;
+/* 独立区块样式 */
+.license-section, 
+.contact-section {
     margin: 3rem auto;
-    padding: 0 1.5rem;
+    max-width: min(760px, 90%);
 }
 
-/* 通用卡片样式 */
 .info-card {
     background: var(--card-bg);
-    border-radius: 14px;
     padding: 1.5rem;
-    margin: 1.5rem 0;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-/* 联系信息 */
-.contact-method {
+/* 联系列表 */
+.contact-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.contact-link {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem;
-    margin: 0.5rem 0;
+    color: var(--text);
+    text-decoration: none;
     border-radius: 8px;
-    transition: background 0.2s ease;
+    transition: background 0.15s;
 }
 
-.contact-method:hover {
-    background: rgba(91,192,235,0.05);
+.contact-link:hover {
+    background: rgba(43,108,176,0.05);
 }
 
-/* ========== 移动端优化 ========== */
+/* 移动端优化 */
 @media (max-width: 640px) {
-    .meta-info {
-        margin: 1.5rem -1rem;
+    .meta-card {
         border-radius: 0;
-        padding: 1rem;
-        flex-direction: column;
-    }
-    
-    .article-content, .article-footer {
-        padding: 0 1rem;
+        margin: 1rem 0;
     }
     
     .info-card {
-        margin: 1rem -0.5rem;
-        border-radius: 0;
+        padding: 1.25rem;
+    }
+    
+    .contact-link {
+        font-size: 0.95rem;
     }
 }
 
-/* ========== SEO优化 ========== */
-h1, h2, h3 {
-    color: var(--primary);
-    line-height: 1.3;
-}
-
-a {
-    color: var(--primary);
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-}
-
-a:hover {
-    color: var(--accent);
-}
-
-/* ========== 兼容性处理 ========== */
-@supports not (backdrop-filter: blur(12px)) {
-    .meta-info, .info-card {
-        background: var(--card-bg);
+/* 打印优化 */
+@media print {
+    .meta-section, 
+    .contact-section {
+        display: none;
+    }
+    
+    .article-container {
+        max-width: 100%;
+        padding: 0;
     }
 }
 </style>
 
-<!-- 更新后的元信息部分 -->
-<div class="meta-info">
-    <time datetime="{{ page.date | date_to_xmlschema }}">
-        📅 {{ page.date | date: "%Y年%m月%d日" }}
-    </time>
-    <div class="author-card">
-        ✍️ 星影
-    </div>
-</div>
-
-<!-- 正文内容容器 -->
-<article class="article-content">
-    {{ content }} <!-- 确保Jekyll内容正确注入 -->
-</article>
-
-<!-- 优化后的页脚 -->
-<footer class="article-footer">
-    <div class="info-card">
-        <h3>📜 内容许可</h3>
-        <p>本文遵循 <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 协议</a>，转载需显式标注来源并保留内容完整性。</p>
-    </div>
-
-    <div class="info-card">
-        <h3>📬 联系作者</h3>
-        <div class="contact-method">
-            📧 <a href="mailto:admin@xingying.us.kg">admin@xingying.us.kg</a>
-        </div>
-        <div class="contact-method">
-            💬 QQ: 3981279069
-        </div>
-    </div>
-</footer>
+<script>
+// 渐进增强加载管理
+document.addEventListener('DOMContentLoaded', () => {
+    const loading = document.getElementById('loading');
+    const content = document.getElementById('content');
+    
+    // 模拟内容加载
+    setTimeout(() => {
+        loading.style.opacity = '0';
+        setTimeout(() => loading.remove(), 300);
+        content.style.visibility = 'visible';
+    }, 300);
+});
+</script>
+</body>
+</html>
