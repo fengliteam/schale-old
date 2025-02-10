@@ -1,239 +1,125 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="theme-system" data-theme="auto">
+<html lang="zh-CN" dir="ltr">
 <head>
-    <!-- 动态元数据系统 -->
+    <!-- 核心元数据 -->
     <meta charset="UTF-8">
     <title>{{ page.title }} | 沙勒避难所</title>
-    <meta name="description" content="{{ page.description | truncate: 160 }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#2b6cb0" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#1a365d" media="(prefers-color-scheme: dark)">
+    <meta name="description" content="{{ page.description | truncate: 155 }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 安全模式样式 -->
+    <style>
+    /* 深度重置 */
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-repeat: no-repeat;
+        font: inherit;
+        color: inherit;
+    }
 
-    <!-- 结构化数据增强 -->
+    /* 基础排版 */
+    body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        line-height: 1.6;
+        color: #1a202c;
+        background: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 安全图标系统 */
+    svg:not([width]) { width: 24px; height: 24px; }
+    </style>
+
+    <!-- 异步加载样式 -->
+    <link rel="preload" href="/css/main.css?v=3.0" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/main.css?v=3.0"></noscript>
+</head>
+
+<body>
+    <!-- 极简加载提示 -->
+    <div id="loader" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:9999;transition:opacity 0.3s;"></div>
+
+    <article class="post">
+        <!-- 元信息 -->
+        <header class="post-header">
+            <div class="meta">
+                <time datetime="{{ page.date | date_to_xmlschema }}">
+                    <svg aria-hidden="true"><use href="#calendar"/></svg>
+                    {{ page.date | date: "%Y年%m月%d日" }}
+                </time>
+                <span class="author">
+                    <svg aria-hidden="true"><use href="#user"/></svg>
+                    星影
+                </span>
+            </div>
+        </header>
+
+        <!-- 正文内容 -->
+        <main class="post-content">
+            {{ content }}
+
+            <!-- AI摘要 -->
+            {% if page.AI %}
+            <aside class="ai-summary">
+                <h2 class="ai-title">
+                    <svg class="ai-icon"><use href="#ai"/></svg>
+                    智能摘要
+                </h2>
+                <div class="ai-content">
+                    {{ page.AI | markdownify }}
+                </div>
+                <p class="ai-notice">本摘要经人工审核，建议结合正文参考</p>
+            </aside>
+            {% endif %}
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="post-footer">
+            <div class="license">
+                <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 协议</a></p>
+            </div>
+        </footer>
+    </article>
+
+    <!-- 基础图标系统 -->
+    <svg style="display:none">
+        <symbol id="calendar" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></symbol>
+        <symbol id="user" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></symbol>
+        <symbol id="ai" viewBox="0 0 24 24"><path d="M21 14c0-3.1-3.3-5.8-8-6.7V4h1c.6 0 1-.4 1-1s-.4-1-1-1h-4c-.6 0-1 .4-1 1s.4 1 1 1h1v3.3c-4.7.9-8 3.6-8 6.7 0 3 3.1 5.6 7.1 6.6l-.6 1.5c-.1.3 0 .6.3.8.3.1.6 0 .8-.3l.7-1.8h5.4l.7 1.8c.1.3.4.4.8.3.3-.1.4-.4.3-.8l-.6-1.5C17.9 19.6 21 17 21 14zm-9 5.9c-4.1-.2-7-2.3-7-5.9 0-2.3 2.4-4.3 6-5.1v5.1c0 .6.4 1 1 1s1-.4 1-1V8.9c3.6.8 6 2.8 6 5.1 0 3.6-2.9 5.7-7 5.9z"/></symbol>
+    </svg>
+
+    <!-- 核心功能脚本 -->
+    <script>
+    // 加载完成处理
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.remove(), 300);
+    });
+
+    // 错误监控
+    window.onerror = (msg, url, line) => {
+        console.error(`Error: ${msg} at ${url}:${line}`);
+    };
+    </script>
+
+    <!-- 结构化数据 -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": ["Article", "TechArticle"],
+        "@type": "Article",
         "headline": "{{ page.title }}",
         "datePublished": "{{ page.date | date_to_xmlschema }}",
         "author": {
             "@type": "Person",
             "name": "星影",
-            "jobTitle": "一个爱好科技的，除了学习什么都学的进去的10后",
             "url": "https://schale.us.kg/about"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "沙勒避难所",
-            "logo": "https://schale.us.kg/logo.svg"
-        },
-        "image": "{{ page.featured_image }}",
-        "interactionStatistic": {
-            "@type": "InteractionCounter",
-            "interactionType": "https://schema.org/ViewAction",
-            "userInteractionCount": "{{ page.views }}"
         }
     }
-    </script>
-
-    <!-- 关键CSS内联 -->
-    <style>
-    :root {
-        --primary: #2b6cb0;   /* WCAG AA认证色 */
-        --gradient: linear-gradient(135deg, #2b6cb0 0%, #4a5568 100%);
-        --ai-accent: #3a86ff;
-        --text-primary: #1a202c;
-        --text-secondary: #4a5568;
-        --card-bg: rgba(255,255,255,0.95);
-        --shadow: 0 12px 40px -16px rgba(43,108,176,0.2);
-    }
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --primary: #90cdf4;
-            --gradient: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
-            --text-primary: #f7fafc;
-            --card-bg: rgba(26,32,44,0.95);
-        }
-    }
-    </style>
-    <!-- 预加载策略 -->
-    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/css/lazyload.css" as="style" media="print" onload="this.media='all'">
-</head>
-
-<body>
-    <!-- 三维加载动画 -->
-    <div id="loading" aria-live="polite">
-        <div class="spinner-3d"></div>
-        <span class="sr-only">内容加载中...</span>
-    </div>
-
-    <article class="post-article">
-        <!-- 元信息卡片 -->
-        <header class="meta-card glow-effect">
-            <div class="meta-grid">
-                <time datetime="{{ page.date | date_to_xmlschema }}" class="meta-item">
-                    <svg class="icon-3d"><use href="#calendar"/></svg>
-                    <span>{{ page.date | date: "%Y年%m月%d日" }}</span>
-                </time>
-                <div class="meta-item author-badge">
-                    <svg class="icon-3d"><use href="#user"/></svg>
-                    <span>星影</span>
-                </div>
-                <div class="meta-item reading-time">
-                    <svg class="icon-3d"><use href="#clock"/></svg>
-                    <span>{{ content | reading_time }}分钟阅读</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- 正文内容区 -->
-        <main class="content-container">
-            {{ content }}
-
-            <!-- AI摘要模块 -->
-            {% if page.AI %}
-            <section class="ai-summary glow-effect" aria-labelledby="aiHeading">
-                <div class="ai-wrapper">
-                    <h2 id="aiHeading" class="ai-title">
-                        <svg class="ai-brain"><use href="#ai-icon"/></svg>
-                        <span>智能摘要</span>
-                        <span class="beta-badge">BETA</span>
-                    </h2>
-                    <div class="ai-content scroll-animation">
-                        {{ page.AI | markdownify }}
-                    </div>
-                    <div class="ai-footer">
-                        <svg class="alert-icon"><use href="#alert"/></svg>
-                        <span>本摘要经人工审核，建议结合正文谨慎参考</span>
-                    </div>
-                </div>
-            </section>
-            {% endif %}
-        </main>
-
-        <!-- 页脚增强模块 -->
-        <footer class="interactive-footer">
-            <div class="license-card">
-                <h3><svg><use href="#license"/></svg>内容许可</h3>
-                <p>遵循 <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0协议</a></p>
-            </div>
-            <div class="dynamic-related">
-                <h3><svg><use href="#related"/></svg>延伸阅读</h3>
-                <div class="card-grid">
-                    {% for post in site.related_posts limit:3 %}
-                    <a href="{{ post.url }}" class="glow-card">
-                        <span>{{ post.title }}</span>
-                        <svg><use href="#arrow"/></svg>
-                    </a>
-                    {% endfor %}
-                </div>
-            </div>
-        </footer>
-    </article>
-
-    <!-- SVG图标系统 -->
-    <svg style="display:none">
-        <symbol id="calendar" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></symbol>
-        <symbol id="user" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></symbol>
-        <symbol id="ai-icon" viewBox="0 0 24 24"><path d="M21 14c0-3.1-3.3-5.8-8-6.7V4h1c.6 0 1-.4 1-1s-.4-1-1-1h-4c-.6 0-1 .4-1 1s.4 1 1 1h1v3.3c-4.7.9-8 3.6-8 6.7 0 3 3.1 5.6 7.1 6.6l-.6 1.5c-.1.3 0 .6.3.8.3.1.6 0 .8-.3l.7-1.8h5.4l.7 1.8c.1.3.4.4.8.3.3-.1.4-.4.3-.8l-.6-1.5C17.9 19.6 21 17 21 14zm-9 5.9c-4.1-.2-7-2.3-7-5.9 0-2.3 2.4-4.3 6-5.1v5.1c0 .6.4 1 1 1s1-.4 1-1V8.9c3.6.8 6 2.8 6 5.1 0 3.6-2.9 5.7-7 5.9z"/></symbol>
-        <symbol id="alert" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></symbol>
-    </svg>
-
-    <!-- 完整样式表 -->
-    <style>
-    /* ====== 三维视觉系统 ====== */
-    .glow-effect {
-        position: relative;
-        &::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 0%, var(--ai-accent), transparent 70%);
-            opacity: 0.1;
-            pointer-events: none;
-        }
-    }
-
-    /* AI摘要模块 */
-    .ai-summary {
-        margin: 4rem auto;
-        max-width: min(86ch, 92%);
-        background: var(--card-bg);
-        border-radius: 2rem;
-        padding: 2.5rem;
-        backdrop-filter: blur(10px);
-        box-shadow: var(--shadow);
-        border: 1px solid rgba(var(--primary),0.1);
-    }
-
-    .ai-content {
-        font-size: clamp(1rem, 2vw, 1.1rem);
-        line-height: 1.8;
-        padding: 1.5rem;
-        background: rgba(var(--primary),0.05);
-        border-radius: 1rem;
-        position: relative;
-        &::before {
-            content: '🤖';
-            position: absolute;
-            right: -1rem;
-            top: -1.5rem;
-            opacity: 0.1;
-            font-size: 4rem;
-        }
-    }
-
-    /* 移动端优化 */
-    @media (max-width: 768px) {
-        .meta-grid {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-        .ai-summary {
-            margin: 2rem -5%;
-            width: 110%;
-            border-radius: 0;
-        }
-    }
-
-    /* 三维加载动画 */
-    .spinner-3d {
-        width: 64px;
-        height: 64px;
-        border: 4px solid var(--primary);
-        border-top-color: transparent;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        position: relative;
-        &::after {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border: 4px solid rgba(var(--primary),0.2);
-            border-radius: 50%;
-        }
-    }
-
-    @keyframes spin {
-        to { transform: rotate(360deg) scale(1.2); }
-    }
-    </style>
-
-    <!-- 渐进增强脚本 -->
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const $loading = document.getElementById('loading');
-        window.requestIdleCallback(() => {
-            $loading.style.opacity = '0';
-            setTimeout(() => $loading.remove(), 300);
-        });
-
-        // 动态主题切换
-        const themeSystem = document.documentElement;
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        themeSystem.dataset.theme = prefersDark ? 'dark' : 'light';
-    });
     </script>
 </body>
 </html>
