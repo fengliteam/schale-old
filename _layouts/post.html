@@ -1,294 +1,175 @@
-<!-- 在<style>标签内添加以下CSS -->
 <style>
-/* ================== 高级材质系统 ================== */
+:root {
+    --primary: #2A5CAA;    /* 深邃蓝 */
+    --accent: #5BC0EB;     /* 活力蓝 */
+    --text: #2D3748;       /* 高对比度文本 */
+    --bg: #F8FAFC;         /* 柔和背景 */
+    --card-bg: rgba(255,255,255,0.98); /* 高可读卡片 */
+}
+
+/* ========== 全局优化 ========== */
+body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.article-content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ========== 响应式元信息卡片 ========== */
 .meta-info {
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(16px) saturate(180%);
-    border-radius: 16px;
-    padding: 1.5rem 2.5rem;
-    margin: 2rem 0;
-    box-shadow: 
-        0 12px 40px rgba(0,0,0,0.08),
-        inset 0 0 0 1px rgba(255,255,255,0.4);
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    padding: 1.25rem;
+    margin: 2rem auto;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
     display: flex;
-    gap: 2rem;
-    align-items: center;
-    position: relative;
-    transform: translateY(0);
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 760px;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .meta-info:hover {
-    transform: translateY(-4px);
-    box-shadow: 
-        0 16px 48px rgba(0,0,0,0.12),
-        inset 0 0 0 1px rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(42,92,170,0.1);
 }
 
-.meta-info::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(
-        120deg,
-        rgba(255,255,255,0.3) 0%,
-        rgba(255,255,255,0) 50%,
-        rgba(255,255,255,0.2) 100%
-    );
-    pointer-events: none;
-}
-
-/* ================ 时间轴艺术设计 ================ */
+/* 时间标签 */
 .meta-info time {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    padding: 0.8rem 1.5rem;
-    background: rgba(42,92,170,0.08);
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: rgba(42,92,170,0.05);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--primary);
 }
 
-.meta-info time::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--accent);
-    transition: width 0.6s ease;
-}
-
-.meta-info time:hover::before {
-    width: 100%;
-    opacity: 0.1;
-}
-
-.meta-info time svg {
-    filter: drop-shadow(0 2px 4px rgba(42,92,170,0.2));
-}
-
-/* ================ 作者名片设计 ================ */
-.meta-info .author-card {
-    display: flex;
+/* 作者卡片 */
+.author-card {
+    display: inline-flex;
     align-items: center;
-    gap: 1.2rem;
-    padding: 0.8rem 1.5rem;
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.9) 0%,
-        rgba(246,248,250,0.9) 100%
-    );
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-}
-
-.author-card::before {
-    content: "";
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: conic-gradient(
-        var(--accent) 0%,
-        var(--primary) 30%,
-        rgba(255,255,255,0.2) 50%,
-        var(--primary) 70%,
-        var(--accent) 100%
-    );
-    opacity: 0.1;
-    animation: rotate 20s linear infinite;
-}
-
-.author-card span {
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: rgba(91,192,235,0.05);
+    border-radius: 8px;
     font-weight: 500;
     color: var(--primary);
-    position: relative;
 }
 
-/* ================ 许可艺术画廊 ================ */
-.license-info {
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(20px);
-    border-radius: 24px;
-    padding: 2.5rem;
-    box-shadow: 
-        0 16px 48px rgba(42,92,170,0.1),
-        inset 0 0 0 1px rgba(255,255,255,0.6);
-    position: relative;
-    overflow: hidden;
+/* ========== 页脚区块优化 ========== */
+.article-footer {
+    max-width: 760px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
 }
 
-.license-info::before {
-    content: "";
-    position: absolute;
-    top: -20%; left: -20%;
-    width: 140%; height: 140%;
-    background: radial-gradient(
-        circle at 50% 50%,
-        rgba(91,192,235,0.08) 0%,
-        rgba(255,255,255,0) 70%
-    );
-    animation: pulse 8s ease-in-out infinite;
+/* 通用卡片样式 */
+.info-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.2); opacity: 0.4; }
-}
-
-.license-info h3 {
-    font-size: 1.5rem;
-    margin: 0 0 1.5rem;
+/* 联系信息 */
+.contact-method {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    color: var(--primary);
-    position: relative;
-}
-
-.license-info h3::before {
-    content: "";
-    width: 40px;
-    height: 40px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232A5CAA"><path d="M14 13v-2h-4v2H9v2h2v2h2v-2h2v-2h-2zm6 2c0 2.206-1.794 4-4 4h-2v-2h2c1.103 0 2-.897 2-2s-.897-2-2-2h-2V9h2c2.206 0 4 1.794 4 4zM8 9c2.206 0 4 1.794 4 4s-1.794 4-4 4H4v-2h4c1.103 0 2-.897 2-2s-.897-2-2-2H4V9h4z"/></svg>');
-    opacity: 0.8;
-}
-
-.license-info p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: rgba(0,0,0,0.8);
-    position: relative;
-}
-
-/* ================ 联系水晶面板 ================ */
-.contact-info {
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(20px);
-    border-radius: 24px;
-    padding: 2.5rem;
-    box-shadow: 
-        0 16px 48px rgba(42,92,170,0.1),
-        inset 0 0 0 1px rgba(255,255,255,0.6);
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-info::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(
-        135deg,
-        rgba(91,192,235,0.05) 0%,
-        rgba(42,92,170,0.03) 100%
-    );
-}
-
-.contact-info h3 {
-    font-size: 1.5rem;
-    margin: 0 0 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: var(--primary);
-}
-
-.contact-info h3::before {
-    content: "";
-    width: 40px;
-    height: 40px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232A5CAA"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>');
-}
-
-.contact-info .contact-method {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
+    gap: 0.75rem;
+    padding: 0.75rem;
     margin: 0.5rem 0;
-    background: rgba(42,92,170,0.03);
-    border-radius: 12px;
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    transition: background 0.2s ease;
 }
 
-.contact-info .contact-method:hover {
-    background: rgba(91,192,235,0.08);
-    transform: translateX(8px);
+.contact-method:hover {
+    background: rgba(91,192,235,0.05);
 }
 
-/* ================ 动态粒子系统 ================ */
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-.particle {
-    position: absolute;
-    opacity: 0.3;
-    animation: float 8s ease-in-out infinite;
-}
-
-/* 响应式优化 */
-@media (max-width: 768px) {
+/* ========== 移动端优化 ========== */
+@media (max-width: 640px) {
     .meta-info {
+        margin: 1.5rem -1rem;
+        border-radius: 0;
+        padding: 1rem;
         flex-direction: column;
-        align-items: stretch;
-        padding: 1.5rem;
     }
     
-    .license-info,
-    .contact-info {
-        padding: 2rem;
+    .article-content, .article-footer {
+        padding: 0 1rem;
+    }
+    
+    .info-card {
+        margin: 1rem -0.5rem;
+        border-radius: 0;
+    }
+}
+
+/* ========== SEO优化 ========== */
+h1, h2, h3 {
+    color: var(--primary);
+    line-height: 1.3;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+/* ========== 兼容性处理 ========== */
+@supports not (backdrop-filter: blur(12px)) {
+    .meta-info, .info-card {
+        background: var(--card-bg);
     }
 }
 </style>
 
-<!-- 更新元信息部分的HTML -->
+<!-- 更新后的元信息部分 -->
 <div class="meta-info">
     <time datetime="{{ page.date | date_to_xmlschema }}">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-            <path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
-        </svg>
-        <span>{{ page.date | date: "%Y年%m月%d日" }}</span>
+        📅 {{ page.date | date: "%Y年%m月%d日" }}
     </time>
-    
     <div class="author-card">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-        </svg>
-        <span>星影</span>
+        ✍️ 星影
     </div>
 </div>
 
-<!-- 更新页脚部分的HTML -->
+<!-- 正文内容容器 -->
+<article class="article-content">
+    {{ content }} <!-- 确保Jekyll内容正确注入 -->
+</article>
+
+<!-- 优化后的页脚 -->
 <footer class="article-footer">
-    <div class="license-info">
-        <h3>内容许可</h3>
-        <p>本文遵循 <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0 协议</a>，转载需显式标注来源并保留内容完整性。商业使用请联系授权。</p>
+    <div class="info-card">
+        <h3>📜 内容许可</h3>
+        <p>本文遵循 <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 协议</a>，转载需显式标注来源并保留内容完整性。</p>
     </div>
-    
-    <div class="contact-info">
-        <h3>联系作者</h3>
+
+    <div class="info-card">
+        <h3>📬 联系作者</h3>
         <div class="contact-method">
-            <svg viewBox="0 0 24 24" width="20" height="20">
-                <path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
-            </svg>
-            <a href="mailto:admin@xingying.us.kg">admin@xingying.us.kg</a>
+            📧 <a href="mailto:admin@xingying.us.kg">admin@xingying.us.kg</a>
         </div>
         <div class="contact-method">
-            <svg viewBox="0 0 24 24" width="20" height="20">
-                <path fill="currentColor" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
-            </svg>
-            <span>QQ: 3981279069</span>
+            💬 QQ: 3981279069
         </div>
     </div>
-    
-    <!-- 动态粒子装饰 -->
-    <div class="particle" style="top:10%; left:15%; width:8px; height:8px; background:var(--accent); animation-delay:-2s"></div>
-    <div class="particle" style="top:30%; right:20%; width:12px; height:12px; background:var(--primary); animation-delay:-5s"></div>
 </footer>
