@@ -70,3 +70,35 @@
         page-break-inside: avoid;
     }
 }
+
+/* 基础排版增强 */
+.post-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+}
+
+.reading-time::before {
+    content: "·";
+    margin: 0 0.5rem;
+}
+
+/* 链接样式 */
+.markdown-content a {
+    color: #2563eb;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.markdown-content a:hover {
+    color: #1d4ed8;
+}
+
+/* 图片优化 */
+.markdown-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
