@@ -8,7 +8,7 @@
 
 <url>
  <loc>https://creativecommons.org/licenses/by-nc/4.0/</loc>
- <priority>0.6</priority>
+ <priority>0.1</priority>
  <lastmod>2025-02-10</lastmod>
  <changefreq>weekly</changefreq>
 </url>
@@ -22,21 +22,21 @@
 
 <url>
  <loc>http://schale.us.kg/about</loc>
- <priority>0.6</priority>
+ <priority>0.3</priority>
  <lastmod>2025-02-10</lastmod>
  <changefreq>weekly</changefreq>
 </url>
 
 <url>
  <loc>http://schale.us.kg/archive</loc>
- <priority>0.6</priority>
+ <priority>0.3</priority>
  <lastmod>2025-02-10</lastmod>
  <changefreq>weekly</changefreq>
 </url>
 
 <url>
  <loc>http://schale.us.kg/friends</loc>
- <priority>0.6</priority>
+ <priority>0.3</priority>
  <lastmod>2025-02-10</lastmod>
  <changefreq>weekly</changefreq>
 </url>
@@ -50,7 +50,7 @@
 
 <url>
  <loc>http://schale.us.kg/tags</loc>
- <priority>0.6</priority>
+ <priority>0.1</priority>
  <lastmod>2025-02-10</lastmod>
  <changefreq>weekly</changefreq>
 </url>
@@ -85,21 +85,21 @@
 
 <url>
  <loc>http://schale.us.kg/EULA</loc>
- <priority>0.6</priority>
+ <priority>0.3</priority>
  <lastmod>2025-02-10</lastmod>
  <changefreq>weekly</changefreq>
 </url>
 
 <url>
  <loc>http://schale.us.kg/feed.xml</loc>
- <priority>0.6</priority>
+ <priority>0.1</priority>
  <lastmod>2025-02-10</lastmod>
  <changefreq>weekly</changefreq>
 </url>
 
 <url>
  <loc>http://schale.us.kg/cdn-cgi/l/email-protection</loc>
- <priority>0.6</priority>
+ <priority>0.2</priority>
  <lastmod>2025-02-10</lastmod>
  <changefreq>weekly</changefreq>
 </url>
